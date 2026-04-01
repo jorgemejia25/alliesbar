@@ -128,3 +128,99 @@
     @apply font-sans;
   }
 }
+
+/* ============================================
+   Allie's Bar Brand Design Tokens
+   ============================================ */
+@theme {
+  /* Core brand colors */
+  --color-primary: #000000;
+  --color-secondary: #735c00;
+  --color-tertiary: #000000;
+  --color-surface: #faf8ff;
+
+  /* Container colors */
+  --color-primary-container: #171b28;
+  --color-secondary-container: #fed65b;
+  --color-tertiary-container: #181c1f;
+  --color-error-container: #ffdad6;
+
+  /* On-color tokens */
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-on-surface: #171b28;
+  --color-on-background: #171b28;
+  --color-on-surface-variant: #46464c;
+  --color-on-primary-container: #808393;
+  --color-on-secondary-container: #745c00;
+  --color-on-tertiary-container: #808488;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* Fixed colors */
+  --color-primary-fixed: #dfe2f3;
+  --color-primary-fixed-dim: #c3c6d7;
+  --color-secondary-fixed: #ffe088;
+  --color-secondary-fixed-dim: #e9c349;
+  --color-tertiary-fixed: #e0e3e7;
+  --color-tertiary-fixed-dim: #c3c7cb;
+
+  /* On-fixed colors */
+  --color-on-primary-fixed: #171b28;
+  --color-on-primary-fixed-variant: #434654;
+  --color-on-secondary-fixed: #241a00;
+  --color-on-secondary-fixed-variant: #574500;
+  --color-on-tertiary-fixed: #181c1f;
+  --color-on-tertiary-fixed-variant: #43474b;
+
+  /* Surface scale */
+  --color-surface-bright: #faf8ff;
+  --color-surface-dim: #d6d9eb;
+  --color-surface-variant: #dfe2f3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container: #eaedff;
+  --color-surface-container-high: #e5e7f9;
+  --color-surface-container-highest: #dfe2f3;
+
+  /* Outline */
+  --color-outline: #76767c;
+  --color-outline-variant: #c7c6cc;
+
+  /* Inverse */
+  --color-inverse-surface: #2c303d;
+  --color-inverse-on-surface: #eef0ff;
+  --color-inverse-primary: #c3c6d7;
+
+  /* Misc */
+  --color-surface-tint: #5a5e6d;
+  --color-error: #ba1a1a;
+
+  /* Brand fonts */
+  --font-headline: var(--font-newsreader);
+  --font-body: var(--font-manrope);
+  --font-label: var(--font-manrope);
+}
+
+/* ============================================
+   Global Custom Styles
+   ============================================ */
+
+/* Material Symbols icon font settings */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Glassmorphism card effect */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+}
+
+/* Hero radial gradient overlay */
+.hero-gradient {
+  background: radial-gradient(circle at center, transparent 0%, #faf8ff 100%);
+}
