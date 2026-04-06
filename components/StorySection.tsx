@@ -1,16 +1,18 @@
+import FadeIn from "./FadeIn";
+
 export default function StorySection() {
   return (
-    <section className="py-32 bg-surface-container-low">
+    <section className="py-32 bg-surface-container-low overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* Images column */}
-          <div className="order-2 lg:order-1">
+          <FadeIn direction="right" className="order-2 lg:order-1">
             <div className="relative">
               {/* Primary image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className="w-full aspect-[4/5] object-cover rounded-2xl shadow-2xl relative z-10"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM7STrZpD_fNbmJ6E0sCuosgnBusrdiPaVoddGxCQAynkdPS3-2yvnXUoZ164jDnDysg6RcQvLeLv8v4O_CBjcUf2_gBPRrQG9nopjMZwuHi79UXalSd71xZ4-ZHUdN9fh5p4qNvSqJEJsn7eXGX-EniQsAMJU3L43QNuYLzqVmjMvBTp49mFTipxn9PZRYvqu343Gvk4pNRVQTnhHrg6KzwbFqIotxN6HPgPVMAXHnLSwpWxR3szotFAm80RHWdjQNvM5YbeCjXw"
+                src="/IMG_6197.jpeg"
                 alt="Professional bartender hands carefully preparing a premium cocktail"
               />
 
@@ -25,10 +27,10 @@ export default function StorySection() {
                 alt="Rows of backlit premium spirit bottles on a high-end bar shelf"
               />
             </div>
-          </div>
+          </FadeIn>
 
           {/* Text column */}
-          <div className="order-1 lg:order-2 space-y-8">
+          <FadeIn direction="left" delay={0.2} className="order-1 lg:order-2 space-y-8">
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs">
               Our Heritage
             </span>
@@ -60,7 +62,7 @@ export default function StorySection() {
                 </span>
               </a>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

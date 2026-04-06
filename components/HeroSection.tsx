@@ -1,93 +1,48 @@
-const heroCards = [
-  {
-    icon: "liquor",
-    title: "Real-time Stock",
-    description:
-      "Precision monitoring of every bottle across multiple locations instantly.",
-    offset: "",
-  },
-  {
-    icon: "monitoring",
-    title: "Loss Mitigation",
-    description:
-      "AI-driven variance detection identifies exactly where revenue is leaking.",
-    offset: "mt-0 md:mt-8",
-  },
-  {
-    icon: "bolt",
-    title: "One-Tap Scan",
-    description:
-      "Rapid mobile scanning using bottle recognition for 90% faster inventory.",
-    offset: "mt-0 md:mt-16",
-  },
-];
+import FadeIn from "./FadeIn";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
-      {/* Background image with gradient overlay */}
-      <div className="absolute inset-0 z-0">
+      {/* Background image with brand dark overlay */}
+      <div className="absolute inset-0 z-0 bg-[#171b28]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          className="w-full h-full object-cover opacity-10 blur-sm"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZGcqf67fQ9lxqJIpfjMzXhr19SR2ksuZRtoEboIOZdVCubBacaAjXj2VH5kYTBLqy0jUapTNx5CFSmVpwbe_f9ANgiwUZa54tbZMJXQYQe0O_RsB-Uqfl0voeuGCVC66IDU8vqXuII0fq418pzRH_tvo36XP0snhVEnYy8vdrSGtXtERquNU0xRlddelIM_KQo5MNV_pMAvwJMSRXgyfP83kLvblCBSiAzuNu-5O3PQ7QilZ1Mj2B0qYEb8lZD3fVzJhHWburp_o"
+          className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
+          src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=2674&auto=format&fit=crop"
           alt="Atmospheric luxury bar interior with warm ambient lighting"
         />
-        <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#171b28]/80 via-[#171b28]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#f2f3ff] via-transparent to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl w-full text-center">
-        {/* Eyebrow badge */}
-        <span className="inline-block px-4 py-1.5 mb-8 text-secondary font-semibold tracking-widest text-xs uppercase bg-secondary-fixed rounded-full">
+      <FadeIn direction="up" duration={0.8} className="relative z-10 max-w-4xl w-full text-center flex flex-col items-center mt-12">
+        
+        {/* Eyebrow badge / Advertising Phrase - moved to top */}
+        <span className="inline-block px-5 py-2 mb-10 text-[#fed65b] font-medium tracking-[0.2em] text-xs uppercase bg-[#171b28]/50 backdrop-blur-md rounded-full border border-[#fed65b]/20 shadow-[0_0_20px_rgba(254,214,91,0.1)]">
           The Gold Standard in Inventory
         </span>
 
-        {/* Headline */}
-        <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl text-primary leading-tight mb-8">
-          Precision poured into <br />
-          <span className="italic">every drop.</span>
+        {/* Name */}
+        <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-bold tracking-tighter drop-shadow-lg mb-8">
+          Allie&apos;s Bar
         </h1>
 
         {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl leading-relaxed mb-12 font-light">
-          Elevate your hospitality operations with Allie&apos;s Bar. A seamless
-          blend of artificial intelligence and professional bar management
-          experience for the modern curator.
+        <p className="max-w-2xl mx-auto text-slate-300 text-lg md:text-xl leading-relaxed mb-12 font-light drop-shadow-md">
+          Elevate your hospitality operations. A seamless blend of artificial intelligence and professional bar management experience for the modern curator.
         </p>
 
         {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto px-10 py-5 bg-primary-container text-on-primary text-lg font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all shadow-xl shadow-primary-container/10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button className="w-full sm:w-auto px-8 py-4 bg-[#fed65b] text-[#171b28] text-base font-bold rounded-full hover:bg-[#e9c349] active:scale-95 transition-all shadow-[0_0_20px_rgba(254,214,91,0.2)]">
             Get Started
           </button>
-          <button className="w-full sm:w-auto px-10 py-5 bg-surface-container-highest text-primary text-lg font-semibold rounded-xl hover:bg-surface-container-high active:scale-95 transition-all">
+          <button className="w-full sm:w-auto px-8 py-4 bg-white/5 text-white border border-white/10 text-base font-medium rounded-full hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm">
             See How It Works
           </button>
         </div>
-
-        {/* Glassmorphic feature cards */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-6xl mx-auto px-4">
-          {heroCards.map((card) => (
-            <div
-              key={card.title}
-              className={`glass-panel p-8 rounded-2xl shadow-lg border border-white/40 ${card.offset}`}
-            >
-              <div className="text-secondary mb-4">
-                <span className="material-symbols-outlined text-4xl">
-                  {card.icon}
-                </span>
-              </div>
-              <h3 className="text-xl font-headline font-semibold mb-2">
-                {card.title}
-              </h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed">
-                {card.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

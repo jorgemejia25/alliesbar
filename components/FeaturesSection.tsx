@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+
 const features = [
   {
     icon: "camera",
@@ -27,9 +29,9 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-32 px-6 bg-surface">
+    <section className="py-32 px-6 bg-surface overflow-hidden">
       {/* Section header */}
-      <div className="max-w-7xl mx-auto text-center mb-24">
+      <FadeIn direction="up" className="max-w-7xl mx-auto text-center mb-24">
         <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
           The Ecosystem
         </span>
@@ -38,13 +40,15 @@ export default function FeaturesSection() {
           <span className="italic">Modern Bar Manager</span>
         </h2>
         <div className="w-24 h-1 bg-secondary-fixed mx-auto" />
-      </div>
+      </FadeIn>
 
       {/* Feature cards grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {features.map((feature) => (
-          <div
+        {features.map((feature, index) => (
+          <FadeIn
             key={feature.title}
+            direction="up"
+            delay={index * 0.1}
             className="bg-surface-container-low p-10 rounded-2xl hover:bg-surface-container transition-all duration-300 group"
           >
             <div className="w-16 h-16 bg-white flex items-center justify-center rounded-xl mb-8 shadow-sm group-hover:bg-secondary-fixed transition-colors">
@@ -58,7 +62,7 @@ export default function FeaturesSection() {
             <p className="text-on-surface-variant leading-relaxed">
               {feature.description}
             </p>
-          </div>
+          </FadeIn>
         ))}
       </div>
     </section>

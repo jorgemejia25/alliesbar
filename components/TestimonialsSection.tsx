@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+
 interface Testimonial {
   quote: string;
   name: string;
@@ -49,23 +51,25 @@ function StarRating() {
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-32 bg-surface-container-low">
+    <section className="py-32 bg-surface-container-low overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
-        <div className="text-center mb-20">
+        <FadeIn direction="up" className="text-center mb-20">
           <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
             Kind Words
           </span>
           <h2 className="font-headline text-4xl md:text-5xl text-primary leading-tight">
             Trust from the <span className="italic">Industry Leaders.</span>
           </h2>
-        </div>
+        </FadeIn>
 
         {/* Testimonials grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {testimonials.map((t) => (
-            <div
+          {testimonials.map((t, index) => (
+            <FadeIn
               key={t.name}
+              direction="up"
+              delay={index * 0.15}
               className="bg-surface-container-lowest p-8 rounded-2xl shadow-sm space-y-6"
             >
               <StarRating />
@@ -78,7 +82,7 @@ export default function TestimonialsSection() {
                   {t.role}
                 </p>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </div>

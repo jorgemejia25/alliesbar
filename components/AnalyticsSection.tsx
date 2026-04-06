@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+
 const checklistItems = [
   "Identify top 10% highest margin cocktails",
   "Auto-generate purchase orders based on par levels",
@@ -13,8 +15,8 @@ const chartBars = [
 ];
 
 const aiPrompts = [
-  "Where am I losing money?",
-  "Forecast next weekend's stock",
+  "Show me the variance report for Don Julio 1942",
+  "Which cocktails have the highest profit margin?",
 ];
 
 export default function AnalyticsSection() {
@@ -22,7 +24,7 @@ export default function AnalyticsSection() {
     <section className="py-32 bg-primary-container text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
         {/* Left: copy */}
-        <div className="lg:col-span-2 space-y-8">
+        <FadeIn direction="right" className="lg:col-span-2 space-y-8">
           <span className="text-secondary-fixed font-bold tracking-[0.2em] uppercase text-xs">
             Deep Intelligence
           </span>
@@ -39,8 +41,8 @@ export default function AnalyticsSection() {
 
           {/* Checklist */}
           <div className="flex flex-col gap-6 pt-4">
-            {checklistItems.map((item) => (
-              <div key={item} className="flex items-start gap-4">
+            {checklistItems.map((item, index) => (
+              <FadeIn key={item} direction="up" delay={0.2 + index * 0.1} className="flex items-start gap-4">
                 <div className="mt-1 w-6 h-6 rounded-full bg-secondary-fixed/20 flex items-center justify-center shrink-0">
                   <span
                     className="material-symbols-outlined text-secondary-fixed text-sm"
@@ -50,13 +52,13 @@ export default function AnalyticsSection() {
                   </span>
                 </div>
                 <p className="text-on-primary-container">{item}</p>
-              </div>
+              </FadeIn>
             ))}
           </div>
-        </div>
+        </FadeIn>
 
         {/* Right: dashboard mockup */}
-        <div className="lg:col-span-3 relative">
+        <FadeIn direction="left" delay={0.2} className="lg:col-span-3 relative">
           <div className="bg-surface-container-lowest rounded-3xl p-8 shadow-2xl text-on-surface min-h-[400px] border border-white/10">
             {/* Mockup header */}
             <div className="flex justify-between items-center mb-10">
@@ -76,7 +78,8 @@ export default function AnalyticsSection() {
                 {chartBars.map((bar, i) => (
                   <div
                     key={i}
-                    className={`${bar.color} w-full rounded-t-lg ${bar.height}`}
+                    className={`${bar.color} w-full rounded-t-lg ${bar.height} transition-all duration-1000 hover:opacity-80`}
+                    style={{ animationDelay: `${i * 100}ms` }}
                   />
                 ))}
               </div>
@@ -105,11 +108,11 @@ export default function AnalyticsSection() {
           </div>
 
           {/* Floating AI panel */}
-          <div className="absolute -bottom-10 -left-10 md:left-20 w-full max-w-[320px] glass-panel rounded-2xl p-6 shadow-2xl border border-white/60 text-primary">
+          <FadeIn direction="up" delay={0.6} className="absolute -bottom-10 -left-10 md:left-20 w-full max-w-[320px] glass-panel rounded-2xl p-6 shadow-2xl border border-white/60 text-primary">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary-container text-white rounded-full flex items-center justify-center">
                 <span
-                  className="material-symbols-outlined text-sm"
+                  className="material-symbols-outlined text-sm animate-pulse"
                   style={{ fontVariationSettings: "'FILL' 1" }}
                 >
                   smart_toy
@@ -119,7 +122,8 @@ export default function AnalyticsSection() {
                 <p className="text-xs font-bold uppercase tracking-wider">
                   Allie AI
                 </p>
-                <span className="text-[10px] text-green-600 font-bold uppercase">
+                <span className="text-[10px] text-green-600 font-bold uppercase flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
                   Online &amp; Analyzing
                 </span>
               </div>
@@ -134,8 +138,8 @@ export default function AnalyticsSection() {
                 </button>
               ))}
             </div>
-          </div>
-        </div>
+          </FadeIn>
+        </FadeIn>
       </div>
     </section>
   );
