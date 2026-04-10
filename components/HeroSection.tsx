@@ -31,12 +31,12 @@ export default function HeroSection() {
         </span>
 
         {/* Name */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-bold tracking-tighter drop-shadow-lg mb-2">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-normal tracking-tight drop-shadow-lg mb-2">
           Allie&apos;s Bar
         </h1>
         
         {/* Inventory System */}
-        <h2 className="text-4xl md:text-5xl lg:text-7xl text-[#fed65b] leading-tight font-bold tracking-tight drop-shadow-lg mb-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#fed65b] leading-tight font-light tracking-[0.2em] uppercase drop-shadow-lg mb-4">
           Inventory System
         </h2>
 
@@ -56,10 +56,10 @@ export default function HeroSection() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="w-full sm:w-auto px-8 py-4 bg-[#fed65b] text-[#171b28] text-base font-bold rounded-full hover:bg-[#e9c349] active:scale-95 transition-all shadow-[0_0_20px_rgba(254,214,91,0.2)]">
+          <button className="w-full sm:w-auto px-8 py-4 bg-[#fed65b] text-[#171b28] text-sm font-medium tracking-wide uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all shadow-[0_0_20px_rgba(254,214,91,0.2)]">
             Get Started
           </button>
-          <button className="w-full sm:w-auto px-8 py-4 bg-white/5 text-white border border-white/10 text-base font-medium rounded-full hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm">
+          <button className="w-full sm:w-auto px-8 py-4 bg-white/5 text-white border border-white/10 text-sm font-light tracking-wide uppercase rounded-full hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm">
             See How It Works
           </button>
         </div>
