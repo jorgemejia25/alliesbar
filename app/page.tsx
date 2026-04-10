@@ -4,6 +4,7 @@ import StorySection from "@/components/StorySection";
 import FeaturesSection from "@/components/FeaturesSection";
 import AnalyticsSection from "@/components/AnalyticsSection";
 import ResponsiveSection from "@/components/ResponsiveSection";
+import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <FeaturesSection />
       <AnalyticsSection />
       <ResponsiveSection />
+      <StatsSection />
       <TestimonialsSection />
       <Footer />
     </main>

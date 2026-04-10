@@ -3,7 +3,7 @@ import FadeIn from "./FadeIn";
 const features = [
   {
     icon: "camera",
-    title: "Bottle Recognition",
+    title: "AI Bottle Recognition",
     description:
       "Simply point your camera. Our AI identifies label, volume, and brand instantly.",
   },
@@ -21,9 +21,9 @@ const features = [
   },
   {
     icon: "psychology",
-    title: "24/7 AI Support",
+    title: "Amphora",
     description:
-      "Always available assistance for data analysis and troubleshooting.",
+      "Named for the Roman amphora—the sealed vessel that carried wine across provinces—Amphora is always on for data analysis and troubleshooting.",
   },
 ];
 

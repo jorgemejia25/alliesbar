@@ -19,14 +19,28 @@ export default function HeroSection() {
       <FadeIn direction="up" duration={0.8} className="relative z-10 max-w-4xl w-full text-center flex flex-col items-center mt-12">
         
         {/* Eyebrow badge / Advertising Phrase - moved to top */}
-        <span className="inline-block px-5 py-2 mb-10 text-[#fed65b] font-medium tracking-[0.2em] text-xs uppercase bg-[#171b28]/50 backdrop-blur-md rounded-full border border-[#fed65b]/20 shadow-[0_0_20px_rgba(254,214,91,0.1)]">
+        <span className="inline-block px-4 py-1.5 mb-6 text-slate-400 font-medium tracking-widest text-[10px] uppercase bg-white/5 backdrop-blur-sm rounded-full border border-white/5">
           The Gold Standard in Inventory
         </span>
 
         {/* Name */}
-        <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-bold tracking-tighter drop-shadow-lg mb-8">
+        <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-bold tracking-tighter drop-shadow-lg mb-2">
           Allie&apos;s Bar
         </h1>
+        
+        {/* Inventory System */}
+        <h2 className="font-headline text-4xl md:text-5xl lg:text-7xl text-[#fed65b] leading-tight font-bold tracking-tight drop-shadow-lg mb-4">
+          Inventory System
+        </h2>
+
+        {/* Powered by AI */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <span className="text-sm md:text-base text-slate-300 font-light tracking-wide uppercase">Powered by AI</span>
+          <span className="flex h-2 w-2 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fed65b] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fed65b]"></span>
+          </span>
+        </div>
 
         {/* Subheadline */}
         <p className="max-w-2xl mx-auto text-slate-300 text-lg md:text-xl leading-relaxed mb-12 font-light drop-shadow-md">

@@ -108,7 +108,7 @@ export default function Navbar() {
               }`}
               onClick={() => setOpen(true)}
               aria-label="Open menu"
-              aria-expanded={open}
+              aria-expanded={open ? "true" : "false"}
             >
               <span className={`block w-5 h-0.5 rounded-full transition-colors ${scrolled ? "bg-slate-700" : "bg-white"}`} />
               <span className={`block w-5 h-0.5 rounded-full transition-colors ${scrolled ? "bg-slate-700" : "bg-white"}`} />

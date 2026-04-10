@@ -22,7 +22,7 @@ export default function StorySection() {
               {/* Secondary floating image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="absolute -bottom-16 -right-16 w-64 h-80 object-cover rounded-2xl shadow-2xl z-20 border-8 border-surface-container-low hidden lg:block"
+                className="absolute -bottom-16 -right-16 w-64 h-80 object-cover rounded-2xl shadow-2xl z-20 border-4 border-[#171b28]/35 ring-1 ring-black/15 hidden lg:block"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQyjovwKADplD7EuhWyNGDKLNS_loR-Zbzj-_hAACwkMkYy3vGLA_z-aZOp4nsTd1Rr2QijDaP_72vDx7lSiBe1AZ6h_uwUHJdAl86zMTJCZUPlzTCvfTPSKaNxXbx0arvfre76sL2-dqQu_AaGyF2FUGNSa3Mffyez3_eSbBGALxkl1NDNevDckAE7Qn4qbTgBra__cMJ2RqIOQWRnrkM3J1cXbCWC98NEKFSoJXMd7KrYNSigAPJe4eex5Mu4XEJgvqZG1CyjUM"
                 alt="Rows of backlit premium spirit bottles on a high-end bar shelf"
               />

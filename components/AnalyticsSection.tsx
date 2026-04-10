@@ -120,7 +120,7 @@ export default function AnalyticsSection() {
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-wider">
-                  Allie AI
+                  Amphora
                 </p>
                 <span className="text-[10px] text-green-600 font-bold uppercase flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
