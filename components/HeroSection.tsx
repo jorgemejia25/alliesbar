@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import RotatingLogo from "./RotatingLogo";
 
 export default function HeroSection() {
   return (
@@ -18,6 +19,9 @@ export default function HeroSection() {
       {/* Content */}
       <FadeIn direction="up" duration={0.8} className="relative z-10 max-w-4xl w-full text-center flex flex-col items-center mt-12">
         
+        {/* Rotating Logo */}
+        <RotatingLogo className="w-24 h-24 mb-8" />
+
         {/* Eyebrow badge / Advertising Phrase - moved to top */}
         <span className="inline-block px-4 py-1.5 mb-6 text-slate-400 font-medium tracking-widest text-[10px] uppercase bg-white/5 backdrop-blur-sm rounded-full border border-white/5">
           The Gold Standard in Inventory
