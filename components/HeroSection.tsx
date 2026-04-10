@@ -3,7 +3,10 @@ import RotatingLogo from "./RotatingLogo";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
+    <section 
+      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden"
+      style={{ fontFamily: '"Century Gothic", Futura, sans-serif' }}
+    >
       {/* Background image with brand dark overlay */}
       <div className="absolute inset-0 z-0 bg-[#171b28]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -28,12 +31,12 @@ export default function HeroSection() {
         </span>
 
         {/* Name */}
-        <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-bold tracking-tighter drop-shadow-lg mb-2">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl text-white leading-tight font-bold tracking-tighter drop-shadow-lg mb-2">
           Allie&apos;s Bar
         </h1>
         
         {/* Inventory System */}
-        <h2 className="font-headline text-4xl md:text-5xl lg:text-7xl text-[#fed65b] leading-tight font-bold tracking-tight drop-shadow-lg mb-4">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl text-[#fed65b] leading-tight font-bold tracking-tight drop-shadow-lg mb-4">
           Inventory System
         </h2>
 
