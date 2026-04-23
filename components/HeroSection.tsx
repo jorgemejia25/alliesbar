@@ -2,6 +2,7 @@
 
 import FadeIn from "./FadeIn";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const HeroGlbModel = dynamic(() => import("./HeroGlbModel"), {
   ssr: false,
@@ -94,12 +95,12 @@ export default function HeroSection() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <button className="w-full sm:w-auto px-8 py-4 bg-[#fed65b] text-[#171b28] text-sm font-medium tracking-wide uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all shadow-[0_0_20px_rgba(254,214,91,0.2)]">
+          <Link
+            href="/pricing"
+            className="w-full sm:w-auto px-8 py-4 bg-[#fed65b] text-[#171b28] text-sm font-medium tracking-wide uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all shadow-[0_0_20px_rgba(254,214,91,0.2)] text-center"
+          >
             Get Started
-          </button>
-          <button className="w-full sm:w-auto px-8 py-4 bg-white/5 text-white border border-white/10 text-sm font-light tracking-wide uppercase rounded-full hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm">
-            See How It Works
-          </button>
+          </Link>
         </div>
       </FadeIn>
     </section>

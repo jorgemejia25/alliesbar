@@ -130,12 +130,12 @@ export default function AnalyticsSection() {
             </div>
             <div className="space-y-3">
               {aiPrompts.map((prompt) => (
-                <button
+                <div
                   key={prompt}
-                  className="w-full text-left p-3 rounded-lg border border-outline-variant hover:bg-secondary-fixed transition-colors text-sm font-medium"
+                  className="w-full text-left p-3 rounded-lg border border-outline-variant text-sm font-medium"
                 >
                   {prompt}
-                </button>
+                </div>
               ))}
             </div>
           </FadeIn>

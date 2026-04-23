@@ -1,20 +1,13 @@
 import Link from "next/link";
 
 const productLinks = [
-  { label: "Printers and Label Rolls", href: "#" },
-  { label: "Pricing & Plans", href: "#" },
-  { label: "License", href: "#" },
+  { label: "Hardware", href: "/hardware" },
+  { label: "Pricing & Plans", href: "/pricing" },
 ];
 
 const companyLinks = [
-  { label: "About", href: "#" },
-  { label: "Contact Us", href: "#" },
-  { label: "Help & FAQ", href: "#" },
-];
-
-const legalLinks = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms and Conditions", href: "#" },
+  { label: "Who We Are", href: "/us" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -62,23 +55,7 @@ export default function Footer() {
               {link.label}
             </Link>
           ))}
-        </div>
-
-        {/* Legal links */}
-        <div className="flex flex-col gap-4">
-          <span className="text-xs uppercase tracking-widest font-bold text-white mb-2">
-            Legal
-          </span>
-          {legalLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-slate-400 hover:text-yellow-500 transition-colors duration-300"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="pt-4">
+          <div className="pt-4 mt-auto">
             <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em]">
               © 2024 Alfanetworks
             </p>

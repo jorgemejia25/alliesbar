@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import Link from "next/link";
 
 export default function StorySection() {
   return (
@@ -52,15 +53,15 @@ export default function StorySection() {
               your guests.
             </p>
             <div className="pt-8">
-              <a
+              <Link
+                href="/us"
                 className="inline-flex items-center gap-4 text-primary font-bold group"
-                href="#"
               >
                 <span>Read our full story</span>
                 <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">
                   arrow_forward
                 </span>
-              </a>
+              </Link>
             </div>
           </FadeIn>
         </div>
