@@ -12,10 +12,7 @@ const HeroGlbModel = dynamic(() => import("./HeroGlbModel"), {
 
 export default function HeroSection() {
   return (
-    <section 
-      className="relative h-screen flex flex-col items-center justify-center pt-24 pb-12 px-6 overflow-hidden"
-      style={{ fontFamily: '"Century Gothic", Futura, sans-serif' }}
-    >
+    <section className="relative h-screen flex flex-col items-center justify-center pt-24 pb-12 px-6 overflow-hidden font-body">
       {/* Background image with brand dark overlay */}
       <div className="absolute inset-0 z-0 bg-[#171b28]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -72,12 +69,12 @@ export default function HeroSection() {
         </span>
 
         {/* Name */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl text-white leading-tight font-normal tracking-tight drop-shadow-lg mb-2">
+        <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl text-white leading-tight font-normal tracking-tight drop-shadow-lg mb-2">
           Allie&apos;s Bar
         </h1>
         
         {/* Inventory System */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-[#fed65b] leading-tight font-light tracking-[0.2em] uppercase drop-shadow-lg mb-4">
+        <h2 className="font-headline text-2xl md:text-3xl lg:text-4xl text-[#fed65b] leading-tight font-light tracking-[0.2em] uppercase drop-shadow-lg mb-4">
           Inventory System
         </h2>
 
