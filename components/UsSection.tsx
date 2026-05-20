@@ -1,132 +1,117 @@
 "use client";
 
-import FadeIn from "./FadeIn";
 import Image from "next/image";
+import { Eye, History, Rocket } from "lucide-react";
+
+import {
+  companyCards,
+  founderClosing,
+  founderStory,
+} from "@/lib/site-content";
+
+import FadeIn from "./FadeIn";
+
+const cardIcons = [Rocket, Eye, History];
 
 export default function UsSection() {
   return (
-    <section className="pt-32 pb-24 px-6 md:px-8 bg-surface-container-lowest relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary-container/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+    <section className="relative overflow-hidden bg-surface-container-lowest px-6 pb-24 pt-32 text-on-surface md:px-8">
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-secondary-container to-transparent" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl">
         <FadeIn direction="up">
-          <div className="text-center mb-20 md:mb-32">
-            <h2 className="font-headline text-5xl md:text-6xl text-primary leading-tight mb-6 tracking-tight">
-              Who We Are
-            </h2>
-            <p className="text-xl md:text-2xl text-on-surface-variant font-medium max-w-3xl mx-auto leading-relaxed">
-              Meet the team and discover the vision behind Allie&apos;s Bar Inventory System.
+          <div className="mx-auto mb-20 max-w-3xl text-center md:mb-28">
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-secondary">
+              Who we are
+            </p>
+            <h1 className="mb-6 font-headline text-5xl leading-tight text-primary md:text-6xl">
+              The team behind Allie&apos;s Bar
+            </h1>
+            <p className="text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl">
+              A hospitality problem, hotel operations experience, and education
+              technology came together to create a smarter inventory system for
+              bars.
             </p>
           </div>
         </FadeIn>
 
-        {/* Founder & Story Section */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-32">
-          {/* Founder Image Card */}
+        <div className="mb-28 grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <FadeIn direction="right">
-              <div className="relative rounded-[2.5rem] overflow-hidden aspect-4/5 shadow-2xl group">
+              <figure className="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl">
                 <Image
                   src="/alejandra-michaud.jpeg"
-                  alt="Alejandra Michaud - Founder & CEO"
+                  alt="Alejandra Michaud - Founder and CEO"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <h3 className="text-3xl font-headline font-bold mb-2">Alejandra Michaud</h3>
-                  <p className="text-secondary-fixed font-bold uppercase tracking-widest text-sm mb-6">
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 p-8 text-white">
+                  <h2 className="mb-2 font-headline text-3xl font-bold">
+                    Alejandra Michaud
+                  </h2>
+                  <p className="mb-6 text-sm font-bold uppercase tracking-[0.22em] text-secondary-fixed">
                     Founder & CEO
                   </p>
-                  
-                  <div className="grid grid-cols-2 gap-y-5 gap-x-4 text-sm font-medium border-t border-white/20 pt-5">
+
+                  <dl className="grid grid-cols-2 gap-x-4 gap-y-5 border-t border-white/20 pt-5 text-sm font-medium">
                     <div>
-                      <span className="block text-white/60 text-xs uppercase tracking-wider mb-1">Specialty</span>
-                      <span className="text-white">MEd</span>
+                      <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
+                        Specialist
+                      </dt>
+                      <dd>MEd</dd>
                     </div>
                     <div>
-                      <span className="block text-white/60 text-xs uppercase tracking-wider mb-1">Experience</span>
-                      <span className="text-white">5+ Years</span>
+                      <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
+                        Experience
+                      </dt>
+                      <dd>5+ years</dd>
                     </div>
                     <div className="col-span-2">
-                      <span className="block text-white/60 text-xs uppercase tracking-wider mb-1">Continuous Improvement</span>
-                      <span className="text-white">100% AlliesBar Focus</span>
+                      <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
+                        Continuous improvement
+                      </dt>
+                      <dd>100% Alliesbar focus</dd>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </dl>
+                </figcaption>
+              </figure>
             </FadeIn>
           </div>
 
-          {/* Founder Quote */}
           <div className="lg:col-span-7">
             <FadeIn direction="left" duration={0.6}>
-              <div className="relative">
-                <span className="material-symbols-outlined text-8xl md:text-[10rem] text-primary/5 absolute -top-10 -left-6 md:-top-16 md:-left-12 select-none z-0">
-                  format_quote
-                </span>
-                <div className="relative z-10 pl-6 md:pl-10 border-l-4 border-secondary-container">
-                  <p className="text-2xl md:text-3xl text-on-surface italic leading-relaxed font-medium mb-8">
-                    &quot;What started as a necessity in a noisy bar turned into a shared vision. With over 25 years of experience working in hotels, my husband knew the strengths and weaknesses of traditional inventory systems. As for me, coming from the world of innovation and technology in education, I was eager to create smarter, simpler solutions.&quot;
-                  </p>
-                  <p className="text-xl md:text-2xl text-on-surface-variant italic leading-relaxed">
-                    &quot;Together, we combined our expertise and passion to build an app that redefines how bars everywhere manage their inventory—because we believe lasting success behind the bar begins with smart control.&quot;
-                  </p>
-                </div>
+              <div className="border-l-4 border-secondary-container pl-6 md:pl-10">
+                <p className="mb-8 text-2xl font-medium italic leading-relaxed text-on-surface md:text-3xl">
+                  &quot;{founderStory}&quot;
+                </p>
+                <p className="text-xl italic leading-relaxed text-on-surface-variant md:text-2xl">
+                  &quot;{founderClosing}&quot;
+                </p>
               </div>
             </FadeIn>
           </div>
         </div>
 
-        {/* Mission, Vision, History Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Mission */}
-          <FadeIn direction="up" duration={0.4}>
-            <div className="h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300">
-                <span className="material-symbols-outlined text-3xl text-secondary-container drop-shadow-sm">rocket_launch</span>
-              </div>
-              <h4 className="text-2xl font-headline font-bold text-primary mb-4">
-                Our Mission
-              </h4>
-              <p className="text-on-surface-variant leading-relaxed">
-                To transform bar inventory management by combining over 25 years of hospitality expertise with AI-driven innovation. We deliver a predictive, user-friendly app that helps every bar thrive with smart, efficient, and sustainable control.
-              </p>
-            </div>
-          </FadeIn>
+        <div className="grid gap-8 md:grid-cols-3">
+          {companyCards.map((card, index) => {
+            const Icon = cardIcons[index] ?? Rocket;
 
-          {/* Vision */}
-          <FadeIn direction="up" duration={0.6}>
-            <div className="h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300">
-                <span className="material-symbols-outlined text-3xl text-secondary-container drop-shadow-sm">visibility</span>
-              </div>
-              <h4 className="text-2xl font-headline font-bold text-primary mb-4">
-                Our Vision
-              </h4>
-              <p className="text-on-surface-variant leading-relaxed">
-                To revolutionize bar management through AI-driven, intuitive technology that empowers owners to minimize losses, optimize operations, and focus on creating unforgettable customer experiences worldwide.
-              </p>
-            </div>
-          </FadeIn>
-          
-          {/* History */}
-          <FadeIn direction="up" duration={0.8}>
-            <div className="h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <div className="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300">
-                <span className="material-symbols-outlined text-3xl text-secondary-container drop-shadow-sm">history_edu</span>
-              </div>
-              <h4 className="text-2xl font-headline font-bold text-primary mb-4">
-                Our History
-              </h4>
-              <p className="text-on-surface-variant leading-relaxed">
-                Allie&apos;s Bar Inventory System was born from a real need. What started as a necessity in a noisy bar evolved into a shared vision. By merging deep hospitality experience with educational technology innovation, we built a solution designed specifically for the real-world challenges of bar management.
-              </p>
-            </div>
-          </FadeIn>
+            return (
+              <FadeIn key={card.title} direction="up" duration={0.45 + index * 0.15}>
+                <article className="group h-full rounded-3xl border border-slate-200 bg-white p-10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+                  <div className="mb-8 flex size-16 items-center justify-center rounded-2xl bg-surface-container text-secondary transition-transform duration-300 group-hover:scale-110">
+                    <Icon aria-hidden size={30} />
+                  </div>
+                  <h2 className="mb-4 font-headline text-2xl font-bold text-primary">
+                    {card.title}
+                  </h2>
+                  <p className="leading-7 text-on-surface-variant">{card.body}</p>
+                </article>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>

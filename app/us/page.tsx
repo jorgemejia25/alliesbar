@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
+
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import UsSection from "@/components/UsSection";
-import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Who We Are | Allie's Bar",
+  description:
+    "Meet Alejandra Michaud and learn the mission, vision, and history behind Allie's Bar Inventory System.",
+};
 
 export default function UsPage() {
   return (

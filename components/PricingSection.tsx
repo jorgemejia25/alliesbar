@@ -1,116 +1,133 @@
 "use client";
 
+import { ArrowRight, CheckCircle2, Globe2, ScanBarcode, Users } from "lucide-react";
+
+import { pricingFeatures, pricingPlans, purchaseHref } from "@/lib/site-content";
+
 import FadeIn from "./FadeIn";
 
-const features = [
-  "Complete system",
-  "Access to print your labels",
-  "Technical manual",
-  "Support 24/7",
-  "Free updates",
+const licenseNotes = [
+  {
+    icon: Users,
+    title: "Unlimited users",
+    body: "Every license supports the full team without per-seat limits.",
+  },
+  {
+    icon: Globe2,
+    title: "Remote access",
+    body: "Review inventory and reports from any device with internet access.",
+  },
+  {
+    icon: ScanBarcode,
+    title: "Barcode additions",
+    body: "Register bottles that are not already in the database using their barcode.",
+  },
 ];
 
 export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="py-24 px-6 md:px-8 bg-surface-container-lowest relative overflow-hidden"
+      className="bg-surface-container-lowest px-6 py-24 text-on-surface md:px-8"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <FadeIn direction="up">
-          <div className="text-center mb-16 relative">
-            <h2 className="font-headline text-4xl md:text-5xl text-primary leading-tight mb-4 relative inline-block">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-secondary">
               Simple Pricing Plan
-              {/* Decorative Arrow */}
-              <svg
-                className="absolute -right-16 -top-2 w-12 h-12 text-secondary-container transform rotate-100 hidden md:block"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </h2>
-            <p className="text-xl text-on-surface-variant font-medium">
-              Select Your License
+            </p>
+            <h1 className="mb-4 font-headline text-4xl leading-tight text-primary md:text-5xl">
+              Select your license
+            </h1>
+            <p className="text-lg font-medium text-on-surface-variant">
+              Both plans include the complete Alliesbar inventory system, label
+              printing access, documentation, support, and future updates.
             </p>
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Annual Plan */}
-          <FadeIn direction="up" duration={0.6}>
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 relative shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full transform hover:-translate-y-1">
-              <div className="absolute top-0 right-0 bg-secondary-container text-slate-900 px-5 py-1.5 rounded-bl-3xl rounded-tr-3xl text-sm font-bold uppercase tracking-wider">
-                Best Value
-              </div>
-              <h3 className="text-2xl font-headline font-bold text-primary mb-2">
-                Annual plan
-              </h3>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-bold text-primary">$2850</span>
-                <span className="text-on-surface-variant font-medium">
-                  / Per year
-                </span>
-              </div>
-              <p className="text-xs font-bold text-secondary-fixed-dim uppercase tracking-wide mb-8 h-8 flex items-center">
-                Check out our wonderful Alliesbar inventory system
-              </p>
+        <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+          {pricingPlans.map((plan, index) => (
+            <FadeIn key={plan.name} direction="up" duration={0.55 + index * 0.15}>
+              <article className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+                <div className="mb-8 flex items-start justify-between gap-4">
+                  <div>
+                    <span className="mb-4 inline-flex rounded-full bg-secondary-fixed px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-on-secondary-fixed">
+                      {plan.eyebrow}
+                    </span>
+                    <h2 className="font-headline text-3xl font-bold text-primary">
+                      {plan.name}
+                    </h2>
+                  </div>
+                  <div className="rounded-2xl bg-surface-container p-3 text-secondary">
+                    <CheckCircle2 aria-hidden size={26} />
+                  </div>
+                </div>
 
-              <div className="mb-8 grow">
-                <p className="font-bold text-primary mb-4">Includes:</p>
-                <ul className="space-y-4">
-                  {features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="material-symbols-outlined text-secondary-container text-xl mt-0.5 select-none">
-                        check_circle
-                      </span>
-                      <span className="text-on-surface-variant font-medium">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </FadeIn>
+                <div className="mb-6">
+                  <div className="flex flex-wrap items-end gap-2">
+                    <span className="text-5xl font-bold tracking-tight text-primary">
+                      {plan.price}
+                    </span>
+                    <span className="pb-2 font-semibold text-on-surface-variant">
+                      / {plan.period}
+                    </span>
+                  </div>
+                  <p className="mt-3 min-h-6 text-sm font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+                    {plan.description}
+                  </p>
+                </div>
 
-          {/* Monthly Plan */}
-          <FadeIn direction="up" duration={0.8}>
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 relative shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full transform hover:-translate-y-1">
-              <h3 className="text-2xl font-headline font-bold text-primary mb-2">
-                Monthly plan
-              </h3>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-bold text-primary">$250</span>
-                <span className="text-on-surface-variant font-medium">
-                  / Per Month
-                </span>
-              </div>
-              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wide mb-8 h-8 flex items-center">
-                No extra charges
-              </p>
+                <div className="mb-8 grow">
+                  <p className="mb-4 font-bold text-primary">Includes:</p>
+                  <ul className="flex flex-col gap-4">
+                    {pricingFeatures.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <CheckCircle2
+                          aria-hidden
+                          size={20}
+                          className="mt-0.5 shrink-0 text-secondary"
+                        />
+                        <span className="font-medium text-on-surface-variant">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              <div className="mb-8 grow">
-                <p className="font-bold text-primary mb-4">Includes:</p>
-                <ul className="space-y-4">
-                  {features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="material-symbols-outlined text-secondary-container text-xl mt-0.5 select-none">
-                        check_circle
-                      </span>
-                      <span className="text-on-surface-variant font-medium">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </FadeIn>
+                <a
+                  href={purchaseHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-container px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-on-primary transition-all hover:opacity-90 active:scale-95"
+                >
+                  Purchase Plan
+                  <ArrowRight aria-hidden size={18} />
+                </a>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
+          {licenseNotes.map((note, index) => {
+            const Icon = note.icon;
+
+            return (
+              <FadeIn key={note.title} direction="up" delay={index * 0.08}>
+                <article className="h-full rounded-2xl border border-slate-200 bg-surface-container-low p-6 dark:border-slate-800">
+                  <Icon aria-hidden className="mb-5 text-secondary" size={28} />
+                  <h3 className="mb-2 font-headline text-xl font-bold text-primary">
+                    {note.title}
+                  </h3>
+                  <p className="text-sm leading-6 text-on-surface-variant">
+                    {note.body}
+                  </p>
+                </article>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>

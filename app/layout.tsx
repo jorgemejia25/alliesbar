@@ -18,9 +18,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Allie's Bar — Precision Bar Inventory",
+  title: "Allies Beverage Inventory System",
   description:
-    "Elevate your hospitality operations with AI-powered inventory management designed by industry veterans.",
+    "Smart inventory control, label printing, and remote reporting for modern bar and hospitality teams.",
 };
 
 export default function RootLayout({

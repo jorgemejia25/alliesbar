@@ -1,107 +1,130 @@
 "use client";
 
 import FadeIn from "./FadeIn";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const HeroGlbModel = dynamic(() => import("./HeroGlbModel"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full rounded-full bg-white/5 animate-pulse" />
-  ),
-});
+// SVG viewBox is 1024×1024. Logo content occupies:
+//   top:    y=304  → 29.7% from top
+//   bottom: y=660  → 64.5% from top
+//   height ratio:  34.8% of total SVG height
+const CONTENT_TOP = 0.297;
+const CONTENT_HEIGHT = 0.348;
+
+// Small breathing room so the top of the A is never clipped.
+const BUFFER = 0.03;
+const CLIP_TOP = CONTENT_TOP - BUFFER;        // 0.267
+const CLIP_HEIGHT = CONTENT_HEIGHT + BUFFER * 2; // 0.408
+
+function GoldLogo({ maxWidth = 520 }: { maxWidth?: number }) {
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        maxWidth,
+        // paddingTop drives height = CLIP_HEIGHT × width (aspect-ratio trick)
+        height: 0,
+        paddingTop: `${CLIP_HEIGHT * 100}%`,
+        overflow: "hidden",
+      }}
+    >
+      {/*
+        translateY percentage resolves against the element's own rendered height
+        (paddingTop: 100% → height = width = W), so translateY(-CLIP_TOP × 100%)
+        shifts the SVG up by exactly CLIP_TOP × W — aligning the letter tops with
+        the container's top edge. Using `top` instead would resolve against the
+        containing block's height: 0, giving zero offset (the original bug).
+      */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: 0,
+          paddingTop: "100%",
+          transform: `translateY(-${CLIP_TOP * 100}%)`,
+          backgroundColor: "#fed65b",
+          maskImage: "url(/new-logo.svg)",
+          WebkitMaskImage: "url(/new-logo.svg)",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+          maskSize: "contain",
+          WebkitMaskSize: "contain",
+          maskPosition: "center top",
+          WebkitMaskPosition: "center top",
+        }}
+      />
+    </div>
+  );
+}
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center pt-24 pb-12 px-6 overflow-hidden font-body">
-      {/* Background image with brand dark overlay */}
+    <section className="relative h-screen flex items-center justify-center overflow-hidden font-body">
+
+      {/* ── Background ── */}
       <div className="absolute inset-0 z-0 bg-[#171b28]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
+          className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
           src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=2674&auto=format&fit=crop"
           alt="Atmospheric luxury bar interior with warm ambient lighting"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#171b28]/80 via-[#171b28]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#f2f3ff] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#171b28] via-[#171b28]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#f2f3ff] via-[#f2f3ff]/8 to-transparent" />
+        {/* Subtle central gold bloom */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 65% 50% at 50% 50%, rgba(254,214,91,0.06) 0%, transparent 100%)",
+          }}
+        />
       </div>
 
-      {/* Content */}
-      <FadeIn direction="up" duration={0.8} className="relative z-10 max-w-4xl w-full text-center flex flex-col items-center mt-6">
-        
-        {/* 3D Model with Dashed Border (Bordes punteados) */}
-        <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 mb-6 flex items-center justify-center">
-          {/* Rotating dashed outer circle */}
-          <svg
-            viewBox="0 0 100 100"
-            className="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite] text-[#fed65b]/40"
-          >
-            <circle
-              cx="50"
-              cy="50"
-              r="49"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.5"
-              strokeDasharray="2 4"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="45"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.5"
-              strokeDasharray="4 8"
-              className="opacity-50"
-            />
-          </svg>
-
-          {/* Subtle glow behind the 3D model */}
-          <div className="absolute inset-0 bg-[#fed65b]/10 blur-[60px] rounded-full pointer-events-none" />
-          
-          {/* The actual 3D GLB Model */}
-          <HeroGlbModel className="w-[85%] h-[85%] relative z-10 drop-shadow-2xl" />
-        </div>
-
-        {/* Eyebrow badge / Advertising Phrase */}
-        <span className="inline-block px-4 py-1.5 mb-4 text-slate-400 font-medium tracking-widest text-[10px] uppercase bg-white/5 backdrop-blur-sm rounded-full border border-white/5">
+      {/* ── Content — single centered column ── */}
+      <FadeIn
+        direction="up"
+        duration={0.9}
+        className="relative z-10 flex flex-col items-center text-center px-6 w-full max-w-2xl mx-auto gap-5"
+      >
+        {/* Eyebrow badge */}
+        <span className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[#fed65b]/60 font-medium tracking-[0.2em] text-[9px] uppercase bg-[#fed65b]/5 rounded-full border border-[#fed65b]/10">
+          <span className="w-[3px] h-[3px] rounded-full bg-[#fed65b]/70 inline-block" />
           The Gold Standard in Inventory
         </span>
 
-        {/* Name */}
-        <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl text-white leading-tight font-normal tracking-tight drop-shadow-lg mb-2">
-          Allie&apos;s Bar
-        </h1>
-        
-        {/* Inventory System */}
-        <h2 className="font-headline text-2xl md:text-3xl lg:text-4xl text-[#fed65b] leading-tight font-light tracking-[0.2em] uppercase drop-shadow-lg mb-4">
-          Inventory System
-        </h2>
+        {/* Gold logo — responsive, CSS-only sizing */}
+        <GoldLogo maxWidth={520} />
 
         {/* Powered by AI */}
-        <div className="flex items-center justify-center gap-2 mb-6">
-          <span className="text-xs md:text-sm text-slate-300 font-light tracking-wide uppercase">Powered by AI</span>
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fed65b] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fed65b]"></span>
+        <div className="flex items-center justify-center gap-2 -mt-1">
+          <span className="text-[9px] text-slate-400/70 font-light tracking-[0.25em] uppercase">
+            Powered by AI
+          </span>
+          <span className="relative flex h-[5px] w-[5px]">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fed65b] opacity-65" />
+            <span className="relative inline-flex rounded-full h-[5px] w-[5px] bg-[#fed65b]" />
           </span>
         </div>
 
+        {/* Thin gold rule */}
+        <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#fed65b]/40 to-transparent" />
+
         {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-slate-300 text-base md:text-lg leading-relaxed mb-8 font-light drop-shadow-md">
-          Elevate your hospitality operations. A seamless blend of artificial intelligence and professional bar management experience for the modern curator.
+        <p className="max-w-md text-slate-300/80 text-[13px] sm:text-sm md:text-[15px] leading-relaxed font-light -mt-1">
+          Elevate your hospitality operations. A seamless blend of artificial
+          intelligence and professional bar management for the modern curator.
         </p>
 
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <Link
-            href="/pricing"
-            className="w-full sm:w-auto px-8 py-4 bg-[#fed65b] text-[#171b28] text-sm font-medium tracking-wide uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all shadow-[0_0_20px_rgba(254,214,91,0.2)] text-center"
-          >
-            Get Started
-          </Link>
-        </div>
+        {/* CTA */}
+        <Link
+          href="/pricing"
+          className="inline-block px-9 py-3.5 bg-[#fed65b] text-[#171b28] text-[10px] font-bold tracking-[0.18em] uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all duration-200 shadow-[0_0_50px_rgba(254,214,91,0.15)] hover:shadow-[0_0_70px_rgba(254,214,91,0.3)]"
+        >
+          Get Started
+        </Link>
       </FadeIn>
     </section>
   );
