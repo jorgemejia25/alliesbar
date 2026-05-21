@@ -71,7 +71,7 @@ export default function Navbar() {
                 : "text-white drop-shadow-md"
             }`}
           >
-            Allie&apos;s Bar
+            Allies
           </div>
 
           {/* Desktop nav links (Center aligned) */}
@@ -166,7 +166,7 @@ export default function Navbar() {
         {/* Sidebar header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 dark:border-slate-800">
           <span className="text-xl font-headline tracking-tight text-slate-900 dark:text-slate-50">
-            Allie&apos;s Bar
+            Allies
           </span>
           <button
             onClick={() => setOpen(false)}
