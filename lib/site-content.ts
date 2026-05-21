@@ -2,23 +2,23 @@ export const purchaseHref = "https://alliesbar.com/payment";
 
 export const faqItems = [
   {
-    question: "How do I install Alliesbar on my device?",
+    question: "How do I install Allies on my device?",
     answer:
-      "Alliesbar offers two types of apps: a web app available through any browser at www.alliesbar.com, and a mobile app available on the App Store and Play Store.",
+      "Allies offers two types of apps: a web app available through any browser at www.alliesbar.com, and a mobile app available on the App Store and Play Store.",
   },
   {
     question: "What happens if I have a bottle of liquor that is not in the system?",
     answer:
-      "You can register any bottle that is not already in the beverage database by using its barcode.",
+      "Don't worry! Our system allows you to register any bottle you can't find in our large beverage database using its barcode.",
   },
   {
-    question: "How many users can I have on my Alliesbar license?",
-    answer: "Your Alliesbar license supports unlimited users.",
+    question: "How many users can I have on my Allies license?",
+    answer: "Unlimited.",
   },
   {
-    question: "Can I access Alliesbar remotely from any device?",
+    question: "Can I access Allies remotely from any device?",
     answer:
-      "Yes. You can review inventory and reports from anywhere as long as you have internet access.",
+      "Of course! You can access your full inventory review or report from wherever you are, provided you only have internet access.",
   },
 ];
 
@@ -133,6 +133,6 @@ export const companyCards = [
     title: "Our History",
     icon: "history_edu",
     body:
-      "Allie's Bar Inventory System was born from a real need in a noisy bar. Hospitality experience and education technology came together to solve the inventory challenges bar teams face every day.",
+      "Allies Beverage Inventory System was born from a real need in a noisy bar. Hospitality experience and education technology came together to solve the inventory challenges bar teams face every day.",
   },
 ];
