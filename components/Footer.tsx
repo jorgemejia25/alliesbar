@@ -10,6 +10,7 @@ const companyLinks = [
   { label: "Who We Are", href: "/us" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact" },
+  { label: "Terms & Conditions", href: "/terms" },
 ];
 
 export default function Footer() {
