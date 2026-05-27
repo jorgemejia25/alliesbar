@@ -41,7 +41,7 @@ export default function StorySection() {
             </h2>
             <p className="text-on-surface-variant text-lg leading-relaxed">
               We don&apos;t just build software; we translate the hospitality
-              language into digital intelligence. Allie&apos;s Bar was founded
+              language into digital intelligence. Allie&apos;s Beverage was founded
               by industry veterans who spent decades behind the mahogany,
               understanding that inventory isn&apos;t just about counting
               bottles—it&apos;s about protecting your craft and your bottom

@@ -42,7 +42,7 @@ export default function ResponsiveSection() {
         <FadeIn direction="up" delay={0.8} className="mt-6 flex items-center gap-4">
           <div className="h-px flex-1 bg-outline-variant/40" />
           <span className="text-xs text-on-surface-variant/60 tracking-widest uppercase shrink-0">
-            Allie&apos;s Bar — Precision Inventory
+            Allie&apos;s Beverage — Precision Inventory
           </span>
           <div className="h-px flex-1 bg-outline-variant/40" />
         </FadeIn>

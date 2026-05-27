@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "FAQ | Allie's Bar",
+  title: "FAQ | Allie's Beverage",
   description:
-    "Answers about installing Alliesbar, adding bottles by barcode, unlimited users, and remote inventory access.",
+    "Answers about accessing Allie's, adding bottles by barcode, unlimited users, and remote inventory access.",
 };
 
 export default function FAQPage() {

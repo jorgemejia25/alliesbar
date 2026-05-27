@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Contact | Allie's Bar",
+  title: "Contact | Allie's Beverage",
   description:
-    "Contact Alliesbar by phone or email for pricing, printer and label questions, setup doubts, or other bar inventory support.",
+    "Contact Allie's by phone or email for pricing, printer and label questions, setup doubts, or other bar inventory support.",
 };
 
 export default function ContactPage() {

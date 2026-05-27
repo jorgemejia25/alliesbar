@@ -2,9 +2,9 @@ export const purchaseHref = "https://alliesbar.com/payment";
 
 export const faqItems = [
   {
-    question: "How do I install Allies on my device?",
+    question: "How do I access Allie's on my device?",
     answer:
-      "Allies offers two types of apps: a web app available through any browser at www.alliesbar.com, and a mobile app available on the App Store and Play Store.",
+      "Allie's is a web app. Open any browser on your phone, tablet, or computer and sign in at www.alliesbar.com. No download from the App Store or Play Store is required.",
   },
   {
     question: "What happens if I have a bottle of liquor that is not in the system?",
@@ -36,7 +36,7 @@ export const pricingPlans = [
     price: "$2850",
     period: "Per year",
     eyebrow: "Best value",
-    description: "Complete access to the Alliesbar inventory system.",
+    description: "Complete access to the Allie's inventory system.",
   },
   {
     name: "Monthly plan",

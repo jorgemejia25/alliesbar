@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Allie's Bar saved us over $2,000 in 'lost' stock in our first month alone. It pays for itself.",
+      "Allie's saved us over $2,000 in 'lost' stock in our first month alone. It pays for itself.",
     name: "Olivia",
     role: "Bar Owner",
   },

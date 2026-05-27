@@ -40,7 +40,7 @@ export default function PricingSection() {
               Select your license
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
-              Both plans include the complete Alliesbar inventory system, label
+              Both plans include the complete Allie&apos;s inventory system, label
               printing access, documentation, support, and future updates.
             </p>
           </div>

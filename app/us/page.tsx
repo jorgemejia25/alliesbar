@@ -5,9 +5,9 @@ import Navbar from "@/components/Navbar";
 import UsSection from "@/components/UsSection";
 
 export const metadata: Metadata = {
-  title: "Who We Are | Allie's Bar",
+  title: "Who We Are | Allie's Beverage",
   description:
-    "Meet Alejandra Michaud and learn the mission, vision, and history behind Allie's Bar Inventory System.",
+    "Meet Alejandra Michaud and learn the mission, vision, and history behind Allie's Beverage Inventory System.",
 };
 
 export default function UsPage() {

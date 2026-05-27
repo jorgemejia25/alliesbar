@@ -14,7 +14,7 @@ export default function HeroGlbModel({
 }) {
   const modelViewer = createElement("model-viewer", {
     src: "/3dsvg.glb",
-    alt: "Allie's Bar 3D mark",
+    alt: "Allie's 3D mark",
     loading: "eager",
     exposure: "1.2",
     style: {

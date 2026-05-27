@@ -27,7 +27,7 @@ function handleSubmit(event: FormEvent<HTMLFormElement>) {
   );
 
   window.location.href = `${contactDetails.emailHref}?subject=${encodeURIComponent(
-    `Alliesbar inquiry: ${subject}`,
+    `Allie's inquiry: ${subject}`,
   )}&body=${body}`;
 }
 
@@ -47,7 +47,7 @@ export default function ContactSection() {
               Get In Touch
             </p>
             <h1 className="mb-4 font-headline text-4xl leading-tight text-primary md:text-5xl">
-              Tell us what you need from Alliesbar
+              Tell us what you need from Allie&apos;s
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
               Ask about pricing, printer and label setup, or how the inventory

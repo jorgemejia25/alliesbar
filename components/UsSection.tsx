@@ -25,7 +25,7 @@ export default function UsSection() {
               Who we are
             </p>
             <h1 className="mb-6 font-headline text-5xl leading-tight text-primary md:text-6xl">
-              The team behind Allie&apos;s Bar
+              The team behind Allie&apos;s Beverage
             </h1>
             <p className="text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl">
               A hospitality problem, hotel operations experience, and education
@@ -72,7 +72,7 @@ export default function UsSection() {
                       <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
                         Continuous improvement
                       </dt>
-                      <dd>100% Alliesbar focus</dd>
+                      <dd>100% Allie&apos;s focus</dd>
                     </div>
                   </dl>
                 </figcaption>

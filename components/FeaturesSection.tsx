@@ -15,9 +15,9 @@ const features = [
   },
   {
     icon: "sync",
-    title: "Web+Mobile Sync",
+    title: "Any Device Access",
     description:
-      "Start on your phone in the cellar, finish on your desktop in the office.",
+      "Use any browser on your phone in the cellar or your desktop in the office — your inventory stays in sync.",
   },
   {
     icon: "psychology",

@@ -20,7 +20,7 @@ export default function FAQSection() {
               Answers before you set up your bar
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
-              Everything you need to know about installation, missing bottles,
+              Everything you need to know about getting started, missing bottles,
               user licenses, and remote access.
             </p>
           </div>

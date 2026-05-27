@@ -5,9 +5,9 @@ import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/PricingSection";
 
 export const metadata: Metadata = {
-  title: "Pricing | Allie's Bar",
+  title: "Pricing | Allie's Beverage",
   description:
-    "Alliesbar license pricing with annual and monthly plans, label printing access, support, manuals, and free updates.",
+    "Allie's license pricing with annual and monthly plans, label printing access, support, manuals, and free updates.",
 };
 
 export default function PricingPage() {
