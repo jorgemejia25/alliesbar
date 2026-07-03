@@ -40,8 +40,8 @@ export default function UsSection() {
             <FadeIn direction="right">
               <figure className="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl">
                 <Image
-                  src="/alejandra-michaud.jpeg"
-                  alt="Alejandra Michaud - Founder and CEO"
+                  src="/about.jpeg"
+                  alt="Alejandra Michaud - Co-founder and CEO"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
@@ -52,7 +52,7 @@ export default function UsSection() {
                     Alejandra Michaud
                   </h2>
                   <p className="mb-6 text-sm font-bold uppercase tracking-[0.22em] text-secondary-fixed">
-                    Founder & CEO
+                    Co-founder and CEO
                   </p>
 
                   <dl className="grid grid-cols-2 gap-x-4 gap-y-5 border-t border-white/20 pt-5 text-sm font-medium">
@@ -60,20 +60,15 @@ export default function UsSection() {
                       <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
                         Specialist
                       </dt>
-                      <dd>MEd</dd>
+                      <dd>Doctorate in Education</dd>
                     </div>
                     <div>
                       <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
                         Experience
                       </dt>
-                      <dd>5+ years</dd>
+                      <dd>+15 years</dd>
                     </div>
-                    <div className="col-span-2">
-                      <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
-                        Continuous improvement
-                      </dt>
-                      <dd>100% Allie&apos;s focus</dd>
-                    </div>
+
                   </dl>
                 </figcaption>
               </figure>
