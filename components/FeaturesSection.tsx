@@ -21,9 +21,9 @@ const features = [
   },
   {
     icon: "psychology",
-    title: "Amphora",
+    title: "Allies",
     description:
-      "Named for the Roman amphora—the sealed vessel that carried wine across provinces—Amphora is always on for data analysis and troubleshooting.",
+      "Allies is always on for data analysis and troubleshooting.",
   },
 ];
 
