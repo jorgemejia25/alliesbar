@@ -1,5 +1,3 @@
-export const purchaseHref = "https://alliesbar.com/payment";
-
 export const faqItems = [
   {
     question: "How do I access Allie's on my device?",
@@ -32,6 +30,7 @@ export const pricingFeatures = [
 
 export const pricingPlans = [
   {
+    id: "yearly",
     name: "Annual plan",
     price: "$2850",
     period: "Per year",
@@ -39,6 +38,7 @@ export const pricingPlans = [
     description: "Complete access to the Allie's inventory system.",
   },
   {
+    id: "monthly",
     name: "Monthly plan",
     price: "$250",
     period: "Per month",

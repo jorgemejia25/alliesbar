@@ -2,7 +2,7 @@
 
 import { ArrowRight, CheckCircle2, Globe2, ScanBarcode, Users } from "lucide-react";
 
-import { pricingFeatures, pricingPlans, purchaseHref } from "@/lib/site-content";
+import { pricingFeatures, pricingPlans } from "@/lib/site-content";
 
 import FadeIn from "./FadeIn";
 
@@ -97,9 +97,7 @@ export default function PricingSection() {
                 </div>
 
                 <a
-                  href={purchaseHref}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={`/payment?plan=${plan.id}`}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-container px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-on-primary transition-all hover:opacity-90 active:scale-95"
                 >
                   Purchase Plan
