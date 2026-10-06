@@ -5,11 +5,11 @@ import Link from "next/link";
 import { ArrowLeft, LoaderCircle, LockKeyhole } from "lucide-react";
 
 const API_URL = "https://api.alliesbar.com";
-type Plan = "monthly" | "yearly";
+type Plan = "initial" | "upgrade";
 
-const planDetails: Record<Plan, { label: string; price: string; period: string }> = {
-  monthly: { label: "Monthly plan", price: "$250", period: "per month" },
-  yearly: { label: "Annual plan", price: "$2,850", period: "per year" },
+const planDetails: Record<Plan, { label: string; price: string; period: string; upcs: string; short: string }> = {
+  initial: { label: "Initial license", price: "$299", period: "per month", upcs: "Up to 1,000 distinct UPCs", short: "Initial · $299" },
+  upgrade: { label: "Upgrade license", price: "$399", period: "per month", upcs: "1,001 – 10,000 distinct UPCs", short: "Upgrade · $399" },
 };
 
 export default function PaymentCheckout({ initialPlan }: { initialPlan: Plan }) {
@@ -64,14 +64,15 @@ export default function PaymentCheckout({ initialPlan }: { initialPlan: Plan }) 
             <p className="text-xs font-bold uppercase tracking-[0.18em]">Selected plan</p>
             <p className="mt-3 font-headline text-3xl font-bold">{detail.label}</p>
             <p className="mt-1 text-lg font-semibold">{detail.price} <span className="text-sm font-medium">{detail.period}</span></p>
+            <p className="mt-3 text-sm font-semibold">{detail.upcs}</p>
           </div>
         </aside>
 
         <form onSubmit={submit} className="rounded-3xl bg-white p-7 text-slate-900 shadow-2xl md:p-10">
           <div className="mb-8 flex rounded-xl bg-slate-100 p-1">
-            {(["monthly", "yearly"] as Plan[]).map((value) => (
+            {(["initial", "upgrade"] as Plan[]).map((value) => (
               <button key={value} type="button" onClick={() => setPlan(value)} className={`flex-1 rounded-lg px-3 py-3 text-sm font-bold transition ${plan === value ? "bg-[#171b28] text-white shadow" : "text-slate-600"}`}>
-                {value === "monthly" ? "Monthly · $250" : "Annual · $2,850"}
+                {planDetails[value].short}
               </button>
             ))}
           </div>

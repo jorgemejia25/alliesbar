@@ -30,22 +30,32 @@ export const pricingFeatures = [
 
 export const pricingPlans = [
   {
-    id: "yearly",
-    name: "Annual plan",
-    price: "$2850",
-    period: "Per year",
-    eyebrow: "Best value",
-    description: "Complete access to the Allie's inventory system.",
+    id: "initial",
+    name: "Initial license",
+    price: "$299",
+    period: "Per month",
+    eyebrow: "Up to 1,000 UPCs",
+    upcRange: "1 – 1,000 distinct UPCs",
+    description: "Includes up to 1,000 distinct UPCs.",
   },
   {
-    id: "monthly",
-    name: "Monthly plan",
-    price: "$250",
+    id: "upgrade",
+    name: "Upgrade license",
+    price: "$399",
     period: "Per month",
-    eyebrow: "Flexible license",
-    description: "No extra charges.",
+    eyebrow: "1,001 – 10,000 UPCs",
+    upcRange: "1,001 – 10,000 distinct UPCs",
+    description:
+      "For 1,001–10,000 UPCs. Above 10,000, we review and quote separately.",
   },
 ];
+
+export const categorySurcharge = {
+  price: "$49",
+  period: "per extra category / month",
+  includedCategories: 4,
+  examples: ["Food", "Supplies", "Coffee shop", "Chemicals"],
+};
 
 export const contactDetails = {
   phone: "+1 (470) 301-7614",

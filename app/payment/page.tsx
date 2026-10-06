@@ -5,5 +5,5 @@ export const metadata: Metadata = { title: "Checkout | Allies", description: "St
 
 export default async function PaymentPage({ searchParams }: { searchParams: Promise<{ plan?: string }> }) {
   const { plan } = await searchParams;
-  return <PaymentCheckout initialPlan={plan === "yearly" ? "yearly" : "monthly"} />;
+  return <PaymentCheckout initialPlan={plan === "upgrade" ? "upgrade" : "initial"} />;
 }

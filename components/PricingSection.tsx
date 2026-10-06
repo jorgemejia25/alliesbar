@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowRight, CheckCircle2, Globe2, ScanBarcode, Users } from "lucide-react";
+import { ArrowRight, Barcode, CheckCircle2, Globe2, LayoutGrid, ScanBarcode, Users } from "lucide-react";
 
-import { pricingFeatures, pricingPlans } from "@/lib/site-content";
+import { categorySurcharge, pricingFeatures, pricingPlans } from "@/lib/site-content";
 
 import FadeIn from "./FadeIn";
 
@@ -40,8 +40,9 @@ export default function PricingSection() {
               Select your license
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
-              Both plans include the complete Allie&apos;s inventory system, label
-              printing access, documentation, support, and future updates.
+              Two licenses based on how many distinct UPCs you track. Both include
+              the complete Allie&apos;s inventory system, label printing access,
+              documentation, support, and future updates.
             </p>
           </div>
         </FadeIn>
@@ -73,7 +74,11 @@ export default function PricingSection() {
                       / {plan.period}
                     </span>
                   </div>
-                  <p className="mt-3 min-h-6 text-sm font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+                  <div className="mt-5 flex items-center gap-3 rounded-2xl bg-surface-container-low px-4 py-3">
+                    <Barcode aria-hidden size={22} className="shrink-0 text-secondary" />
+                    <span className="font-bold text-primary">{plan.upcRange}</span>
+                  </div>
+                  <p className="mt-3 min-h-12 text-sm font-medium leading-6 text-on-surface-variant">
                     {plan.description}
                   </p>
                 </div>
@@ -107,6 +112,35 @@ export default function PricingSection() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn direction="up">
+          <article className="mx-auto mt-8 flex max-w-5xl flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg md:flex-row md:items-center md:justify-between dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-start gap-4">
+              <div className="rounded-2xl bg-surface-container p-3 text-secondary">
+                <LayoutGrid aria-hidden size={26} />
+              </div>
+              <div>
+                <h2 className="font-headline text-2xl font-bold text-primary">
+                  Additional categories
+                </h2>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-on-surface-variant">
+                  The {categorySurcharge.includedCategories} default categories are
+                  included in every license. Each new category you add, such as{" "}
+                  {categorySurcharge.examples.join(", ").toLowerCase()}, is billed
+                  separately.
+                </p>
+              </div>
+            </div>
+            <div className="flex shrink-0 items-end gap-2 md:flex-col md:items-end md:gap-0">
+              <span className="text-4xl font-bold tracking-tight text-primary">
+                {categorySurcharge.price}
+              </span>
+              <span className="pb-1 text-sm font-semibold text-on-surface-variant md:pb-0">
+                {categorySurcharge.period}
+              </span>
+            </div>
+          </article>
+        </FadeIn>
 
         <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
           {licenseNotes.map((note, index) => {
