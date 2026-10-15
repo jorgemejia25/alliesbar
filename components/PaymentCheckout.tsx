@@ -12,7 +12,7 @@ const planDetails: Record<Plan, { label: string; price: string; period: string; 
   upgrade: { label: "Upgrade license", price: "$399", period: "per month", upcs: "1,001 – 10,000 distinct UPCs", short: "Upgrade · $399" },
 };
 
-export default function PaymentCheckout({ initialPlan }: { initialPlan: Plan }) {
+export default function PaymentCheckout({ initialPlan, cancelled = false }: { initialPlan: Plan; cancelled?: boolean }) {
   const [plan, setPlan] = useState<Plan>(initialPlan);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -85,6 +85,7 @@ export default function PaymentCheckout({ initialPlan }: { initialPlan: Plan }) 
             <label className="sm:col-span-2 text-sm font-semibold">City<input required name="city" className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-[#b89232]" /></label>
             <label className="sm:col-span-2 text-sm font-semibold">Address <span className="font-normal text-slate-500">(optional)</span><input name="address" className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-[#b89232]" /></label>
           </div>
+          {cancelled && !error && <p className="mb-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-800">Checkout was cancelled. You can try again whenever you&apos;re ready.</p>}
           {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
           <button disabled={loading} className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#171b28] px-6 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition hover:bg-[#29334a] disabled:cursor-wait disabled:opacity-70">
             {loading ? <LoaderCircle className="animate-spin" size={18} /> : <LockKeyhole size={18} />} Start 90-day free trial
