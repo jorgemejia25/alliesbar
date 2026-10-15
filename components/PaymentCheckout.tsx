@@ -59,12 +59,13 @@ export default function PaymentCheckout({ initialPlan }: { initialPlan: Plan }) 
           </Link>
           <p className="mt-12 text-xs font-bold uppercase tracking-[0.24em] text-[#fed65b]">Secure checkout</p>
           <h1 className="mt-4 font-headline text-4xl leading-tight">Start with Allies.</h1>
-          <p className="mt-4 leading-7 text-slate-300">Choose a plan, enter your venue details, then complete payment securely with Stripe.</p>
+          <p className="mt-4 leading-7 text-slate-300">Choose a plan, enter your venue details, then add a card securely with Stripe. Your 90-day free trial starts right away and your venue account is created automatically.</p>
           <div className="mt-10 rounded-2xl bg-[#fed65b] p-6 text-[#171b28]">
             <p className="text-xs font-bold uppercase tracking-[0.18em]">Selected plan</p>
             <p className="mt-3 font-headline text-3xl font-bold">{detail.label}</p>
             <p className="mt-1 text-lg font-semibold">{detail.price} <span className="text-sm font-medium">{detail.period}</span></p>
             <p className="mt-3 text-sm font-semibold">{detail.upcs}</p>
+            <p className="mt-4 rounded-lg bg-[#171b28] px-3 py-2 text-sm font-bold text-[#fed65b]">90-day free trial · {detail.price} billed after the trial. Cancel anytime.</p>
           </div>
         </aside>
 
@@ -86,7 +87,7 @@ export default function PaymentCheckout({ initialPlan }: { initialPlan: Plan }) 
           </div>
           {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
           <button disabled={loading} className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#171b28] px-6 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition hover:bg-[#29334a] disabled:cursor-wait disabled:opacity-70">
-            {loading ? <LoaderCircle className="animate-spin" size={18} /> : <LockKeyhole size={18} />} Continue to Stripe
+            {loading ? <LoaderCircle className="animate-spin" size={18} /> : <LockKeyhole size={18} />} Start 90-day free trial
           </button>
         </form>
       </div>
