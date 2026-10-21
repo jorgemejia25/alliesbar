@@ -16,14 +16,15 @@ export default function HardwareSection() {
         <FadeIn direction="up">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-secondary">
-              Printers and label rolls
+              Recommended printer and labels
             </p>
             <h1 className="mb-4 font-headline text-4xl leading-tight text-primary md:text-5xl">
-              Hardware Requirements
+              Print QR labels your way
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
-              The source setup recommends a Rollo wireless thermal printer and
-              2x1 barcode label rolls for a reliable label printing workflow.
+              Print a QR label for each liquor bottle you want to track. Our
+              recommended setup is a Rollo Wi-Fi direct thermal printer with
+              weatherproof 2 × 1 inch labels. Your printer, your choice.
             </p>
           </div>
         </FadeIn>
@@ -46,12 +47,17 @@ export default function HardwareSection() {
                   </div>
 
                   <div className="mb-6 flex items-center gap-3">
-                    <span className="flex size-12 items-center justify-center rounded-2xl bg-secondary-container/25 text-secondary">
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-secondary-container/25 text-secondary">
                       <Icon aria-hidden size={24} />
                     </span>
-                    <h2 className="font-headline text-2xl font-bold text-primary">
-                      {product.name}
-                    </h2>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+                        {product.eyebrow}
+                      </p>
+                      <h2 className="font-headline text-2xl font-bold text-primary">
+                        {product.name}
+                      </h2>
+                    </div>
                   </div>
 
                   <ul className="mb-8 flex grow flex-col gap-3">
@@ -70,15 +76,22 @@ export default function HardwareSection() {
                     ))}
                   </ul>
 
-                  <a
-                    href={product.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary-container px-6 py-3.5 text-sm font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary-container hover:text-on-primary"
-                  >
-                    {product.cta}
-                    <ExternalLink aria-hidden size={17} />
-                  </a>
+                  {product.href ? (
+                    <a
+                      href={product.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary-container px-6 py-3.5 text-sm font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary-container hover:text-on-primary"
+                    >
+                      {product.cta}
+                      <ExternalLink aria-hidden size={17} />
+                    </a>
+                  ) : (
+                    <p className="rounded-xl bg-surface-container-low px-6 py-3.5 text-center text-sm font-medium text-on-surface-variant">
+                      Choose label stock compatible with your printer and
+                      suitable for the bar.
+                    </p>
+                  )}
                 </article>
               </FadeIn>
             );

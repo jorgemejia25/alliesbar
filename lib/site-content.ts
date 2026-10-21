@@ -71,33 +71,38 @@ export const contactSubjects = [
   "Other",
 ];
 
-export const hardwareProducts = [
+export const hardwareProducts: {
+  eyebrow: string;
+  name: string;
+  image: string;
+  alt: string;
+  href?: string;
+  cta?: string;
+  specs: [string, string][];
+}[] = [
   {
-    name: "Rollo Wireless Label Printer",
-    image: "/logo-alliesbar.png",
-    alt: "Rollo Wireless Label Printer",
+    eyebrow: "Suggested printer",
+    name: "Rollo Wi-Fi Label Printer",
+    image: "/rollo-printer.jpg",
+    alt: "Rollo Wi-Fi printer printing an Allie's QR bottle label",
     href: "https://www.rollo.com/product/rollo-wireless-printer/",
     cta: "Buy printer",
     specs: [
-      ["Print method", "Thermal Transfer"],
-      ["Resolution", "203 dpi"],
-      ["Print speed", "High speed: 150 mm/s, one 4x6 label per second"],
-      ["Wifi", "Enabled"],
-      ["AirPrint", "Enabled"],
+      ["Print method", "Direct thermal label printing"],
+      ["Supplies", "No ink or toner needed"],
+      ["Connection", "Wi-Fi and AirPrint"],
       ["Setup", "No driver needed"],
     ],
   },
   {
-    name: "Labels Roll",
+    eyebrow: "Recommended labels",
+    name: "Weatherproof Labels, 2 × 1 in",
     image: "/labels-roll.png",
-    alt: "Barcode labels roll",
-    href: "https://www.rollo.com/product/2x1-barcode-label/",
-    cta: "Buy labels roll",
+    alt: "Roll of 2 by 1 inch labels",
     specs: [
-      ["Label size", "1 inch high by 2 inches wide"],
-      ["Thickness", "0.003 inch (0.06 mm) min. to 0.01 inch (0.25 mm) max."],
-      ["Roll count", "1,000 labels per roll"],
-      ["Core diameter", "1 inch core, 4 inch outer diameter"],
+      ["Label size", "2 inches wide by 1 inch high"],
+      ["Material", "Weatherproof, built for wet bar conditions"],
+      ["Use", "One QR label per tracked liquor bottle"],
     ],
   },
 ];
@@ -120,11 +125,43 @@ export const rolloInstallSteps = [
   },
 ];
 
-export const founderStory =
-  "What started as a necessity in a noisy bar turned into a shared vision. With over 25 years of experience working in hotels, my husband knew the strengths and weaknesses of traditional inventory systems. Coming from the world of innovation and technology in education, I was eager to create smarter, simpler solutions.";
+export const storyQuestion = "What if we could do it better?";
 
-export const founderClosing =
-  "Together, we combined our expertise and passion to build an app that redefines how bars everywhere manage their inventory because we believe lasting success behind the bar begins with smart control.";
+export const storyOrigin = [
+  {
+    title: "Over 25 years in hospitality",
+    body: "My husband had spent over 25 years in hospitality. He knew the industry, the challenges, and the frustrations of managing beverage inventory. He used a platform he liked, but it had limitations.",
+  },
+  {
+    title: "One visit to his work",
+    body: "One day, I visited him at work and asked to see the system. After just a few minutes, I realized something: the problem wasn't a lack of technology. It was that technology could do so much more.",
+  },
+];
+
+export const storyDialogue = [
+  { speaker: "I asked", line: "What if I could build something better?" },
+  {
+    speaker: "He laughed",
+    line: "How? You don't know my business or anything about beverage inventory.",
+  },
+  {
+    speaker: "I replied",
+    line: "You're right. But I understand processes, technology, and how to use AI to solve problems. You know the industry. I know how to build solutions.",
+  },
+  { speaker: "He said", line: "Okay." },
+];
+
+export const storyToday =
+  "Today, Allie's Beverage Inventory System uses AI-powered computer vision to measure the liquid remaining in bottles using just a device's camera, without scales or specialized measuring equipment. We transformed a daily operational challenge into a smarter, simpler way to manage beverage inventory.";
+
+export const storyPillars = [
+  "He knew the industry.",
+  "I knew the technology.",
+  "Together, we built the solution.",
+];
+
+export const founderQuote =
+  "Allie's was born from a real problem, a conversation, and the belief that there had to be a better way.";
 
 export const companyCards = [
   {
@@ -143,6 +180,75 @@ export const companyCards = [
     title: "Our History",
     icon: "history_edu",
     body:
-      "Allies Beverage Inventory System was born from a real need in a noisy bar. Hospitality experience and education technology came together to solve the inventory challenges bar teams face every day.",
+      "Allie's wasn't born in a boardroom. It was born from a real problem, a conversation between two people with different expertise, and the belief that there had to be a better way.",
+  },
+];
+
+export const bottleLifecycle = [
+  {
+    step: "Receive",
+    title: "Upload the invoice. Review the details",
+    image: "/app/receiving.jpg",
+    alt: "New Receiving screen in the Allie's app, with Take Photo and Upload File options",
+    points: [
+      "Photograph or upload the invoice. AI Invoice extracts the products for you to review and correct.",
+      "Add items manually or by scanning a barcode.",
+      "Once confirmed, inventory will update.",
+    ],
+  },
+  {
+    step: "Label",
+    title: "Track individual liquor bottles with QR",
+    image: "/app/labels.jpg",
+    alt: "Bottle Labels screen in the Allie's app, showing a bottle's QR code",
+    points: [
+      "Print QR labels for individual liquor bottles.",
+      "Scan a bottle's QR code to measure it, transfer it, or mark it as finished, broken or courtesy.",
+      "Each bottle's movements stay linked to its QR code.",
+    ],
+  },
+  {
+    step: "Transfer",
+    title: "From the storage room to the bar, on the record",
+    image: "/app/transfer.jpg",
+    alt: "Operations screen in the Allie's app, recording a transfer",
+    points: [
+      "Move stock between outlets, from the storage room to each bar.",
+      "Every transfer records the user, the date, the time and the product.",
+      "A QR-tracked bottle keeps each move in its own history.",
+    ],
+  },
+  {
+    step: "Measure",
+    title: "Four quick ways to record bottle levels",
+    image: "/app/measure.jpg",
+    alt: "Allie's measuring the liquid level of a bottle from a photo",
+    points: [
+      "Camera: AI estimates the level from a photo. No scales or ruler needed.",
+      "Full or empty: one tap marks a sealed or empty bottle.",
+      "Ruler: set the level by hand without taking a photo.",
+    ],
+  },
+  {
+    step: "Count",
+    title: "Count together, from any device",
+    image: "/app/count.jpg",
+    alt: "Quick Count screen in the Allie's app, with the shared count option",
+    points: [
+      "Multiple team members can count the same outlet simultaneously.",
+      "Work by category and type, search for products, and see what is still pending.",
+      "Save partial progress and finish later if interrupted.",
+    ],
+  },
+  {
+    step: "Empty",
+    title: "When the bottle is finished, it leaves inventory",
+    image: "/app/empty.jpg",
+    alt: "Operations screen in the Allie's app, marking bottles as finished",
+    points: [
+      "Finished bottles come out of inventory so they can be replaced bottle-for-bottle.",
+      "Broken bottles and courtesy items are recorded too.",
+      "A QR-tracked bottle's history runs from receiving to empty.",
+    ],
   },
 ];

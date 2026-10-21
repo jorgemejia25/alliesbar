@@ -12,9 +12,9 @@ export default function StorySection() {
               {/* Primary image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="w-full aspect-[4/5] object-cover rounded-2xl shadow-2xl relative z-10"
-                src="/IMG_6197.jpeg"
-                alt="Professional bartender hands carefully preparing a premium cocktail"
+                className="w-full aspect-[4/5] object-cover object-[center_70%] rounded-2xl shadow-2xl relative z-10"
+                src="/founders.jpg"
+                alt="Timothy and Alejandra, the founders of Allie's, seated on a hotel staircase"
               />
 
               {/* Decorative yellow background shape */}
@@ -23,9 +23,9 @@ export default function StorySection() {
               {/* Secondary floating image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="absolute -bottom-16 -right-16 w-64 h-80 object-cover rounded-2xl shadow-2xl z-20 border-4 border-[#171b28]/35 ring-1 ring-black/15 hidden lg:block"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQyjovwKADplD7EuhWyNGDKLNS_loR-Zbzj-_hAACwkMkYy3vGLA_z-aZOp4nsTd1Rr2QijDaP_72vDx7lSiBe1AZ6h_uwUHJdAl86zMTJCZUPlzTCvfTPSKaNxXbx0arvfre76sL2-dqQu_AaGyF2FUGNSa3Mffyez3_eSbBGALxkl1NDNevDckAE7Qn4qbTgBra__cMJ2RqIOQWRnrkM3J1cXbCWC98NEKFSoJXMd7KrYNSigAPJe4eex5Mu4XEJgvqZG1CyjUM"
-                alt="Rows of backlit premium spirit bottles on a high-end bar shelf"
+                className="absolute -bottom-16 -right-16 w-52 aspect-[9/16] object-cover object-top rounded-[1.75rem] shadow-2xl z-20 border-[6px] border-[#171b28] hidden lg:block"
+                src="/app/measure.jpg"
+                alt="Allie's measuring the liquid left in a bottle from a photo"
               />
             </div>
           </FadeIn>
@@ -33,24 +33,24 @@ export default function StorySection() {
           {/* Text column */}
           <FadeIn direction="left" delay={0.2} className="order-1 lg:order-2 space-y-8">
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs">
-              Our Heritage
+              The story behind Allie&apos;s
             </span>
             <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-primary leading-tight">
-              A shared vision born from{" "}
-              <span className="italic">25 years of service.</span>
+              &ldquo;What if we could{" "}
+              <span className="italic">do it better?&rdquo;</span>
             </h2>
             <p className="text-on-surface-variant text-lg leading-relaxed">
-              We don&apos;t just build software; we translate the hospitality
-              language into digital intelligence. Allie&apos;s Beverage was founded
-              by industry veterans who spent decades behind the mahogany,
-              understanding that inventory isn&apos;t just about counting
-              bottles—it&apos;s about protecting your craft and your bottom
-              line.
+              That simple question changed everything. After more than 25
+              years in hospitality, Timothy used a beverage inventory platform
+              he liked, but it had limitations. When Alejandra saw it, she
+              realized the problem wasn&apos;t a lack of technology. It was
+              that technology could do so much more.
             </p>
             <p className="text-on-surface-variant text-lg leading-relaxed">
-              Our system is designed to disappear into your workflow, providing
-              the data you need without distracting you from what matters most:
-              your guests.
+              He knew the industry. She knew processes, technology and AI.
+              Together, they built Allie&apos;s: a smarter, simpler way to
+              manage beverage inventory, born from a real problem rather than
+              a boardroom.
             </p>
             <div className="pt-8">
               <Link

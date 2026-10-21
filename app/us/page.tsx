@@ -7,7 +7,7 @@ import UsSection from "@/components/UsSection";
 export const metadata: Metadata = {
   title: "Who We Are | Allie's Beverage",
   description:
-    "Meet Alejandra Michaud and learn the mission, vision, and history behind Allie's Beverage Inventory System.",
+    "Meet Timothy and Alejandra and learn the story, mission, and vision behind Allie's Beverage Inventory System.",
 };
 
 export default function UsPage() {

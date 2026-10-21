@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Printers and Rolls | Allie's Beverage",
   description:
-    "Recommended Rollo wireless label printer, 2x1 label rolls, printer specifications, and setup steps for Allie's.",
+    "Recommended Rollo Wi-Fi direct thermal printer, weatherproof 2 × 1 inch QR labels, and setup steps for Allie's.",
 };
 
 export default function HardwarePage() {

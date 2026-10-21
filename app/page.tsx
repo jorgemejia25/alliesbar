@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import StorySection from "@/components/StorySection";
 import FeaturesSection from "@/components/FeaturesSection";
+import AppLifecycleSection from "@/components/AppLifecycleSection";
 import AnalyticsSection from "@/components/AnalyticsSection";
 import ResponsiveSection from "@/components/ResponsiveSection";
 import StatsSection from "@/components/StatsSection";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <StorySection />
       <FeaturesSection />
+      <AppLifecycleSection />
       <AnalyticsSection />
       <ResponsiveSection />
       <StatsSection />

@@ -5,8 +5,12 @@ import { Eye, History, Rocket } from "lucide-react";
 
 import {
   companyCards,
-  founderClosing,
-  founderStory,
+  founderQuote,
+  storyDialogue,
+  storyOrigin,
+  storyPillars,
+  storyQuestion,
+  storyToday,
 } from "@/lib/site-content";
 
 import FadeIn from "./FadeIn";
@@ -28,9 +32,8 @@ export default function UsSection() {
               The team behind Allie&apos;s Beverage
             </h1>
             <p className="text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl">
-              A hospitality problem, hotel operations experience, and education
-              technology came together to create a smarter inventory system for
-              bars.
+              &ldquo;{storyQuestion}&rdquo; That simple question changed
+              everything.
             </p>
           </div>
         </FadeIn>
@@ -40,33 +43,34 @@ export default function UsSection() {
             <FadeIn direction="right">
               <figure className="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl">
                 <Image
-                  src="/about.jpeg"
-                  alt="Alejandra Michaud - Co-founder and CEO"
+                  src="/founders.jpg"
+                  alt="Timothy and Alejandra, the founders of Allie's, seated on a hotel staircase"
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-[center_70%] transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
                 <figcaption className="absolute inset-x-0 bottom-0 p-8 text-white">
                   <h2 className="mb-2 font-headline text-3xl font-bold">
-                    Alejandra Michaud
+                    Timothy and Alejandra
                   </h2>
                   <p className="mb-6 text-sm font-bold uppercase tracking-[0.22em] text-secondary-fixed">
-                    Co-founder and CEO
+                    Founders
                   </p>
 
                   <dl className="grid grid-cols-2 gap-x-4 gap-y-5 border-t border-white/20 pt-5 text-sm font-medium">
                     <div>
                       <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
-                        Specialist
+                        Hospitality
                       </dt>
-                      <dd>Doctorate in Education</dd>
+                      <dd>25+ years in the industry</dd>
                     </div>
                     <div>
                       <dt className="mb-1 text-xs uppercase tracking-[0.18em] text-white/60">
-                        Experience
+                        Technology
                       </dt>
-                      <dd>+15 years</dd>
+                      <dd>Processes, technology and AI</dd>
                     </div>
 
                   </dl>
@@ -77,17 +81,71 @@ export default function UsSection() {
 
           <div className="lg:col-span-7">
             <FadeIn direction="left" duration={0.6}>
-              <div className="border-l-4 border-secondary-container pl-6 md:pl-10">
-                <p className="mb-8 text-2xl font-medium italic leading-relaxed text-on-surface md:text-3xl">
-                  &quot;{founderStory}&quot;
-                </p>
-                <p className="text-xl italic leading-relaxed text-on-surface-variant md:text-2xl">
-                  &quot;{founderClosing}&quot;
-                </p>
+              <div className="space-y-12">
+                <div>
+                  <h2 className="mb-6 font-headline text-3xl font-bold text-primary">
+                    Where the idea came from
+                  </h2>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {storyOrigin.map((item) => (
+                      <div key={item.title}>
+                        <h3 className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-secondary">
+                          {item.title}
+                        </h3>
+                        <p className="leading-7 text-on-surface-variant">{item.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="mb-6 font-headline text-3xl font-bold text-primary">
+                    The drive home that evening
+                  </h2>
+                  <dl className="space-y-5 border-l-4 border-secondary-container pl-6 md:pl-10">
+                    {storyDialogue.map((item) => (
+                      <div key={item.speaker}>
+                        <dt className="mb-1 text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant/70">
+                          {item.speaker}
+                        </dt>
+                        <dd className="text-xl font-medium italic leading-relaxed text-on-surface md:text-2xl">
+                          &ldquo;{item.line}&rdquo;
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-6 text-lg font-bold text-primary">
+                    And that was the beginning of Allie&apos;s.
+                  </p>
+                </div>
               </div>
             </FadeIn>
           </div>
         </div>
+
+        <FadeIn direction="up">
+          <div className="mb-28 grid items-center gap-10 rounded-3xl bg-primary-container p-8 text-white shadow-xl md:p-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-secondary-fixed">
+                Allie&apos;s today
+              </p>
+              <p className="mb-6 text-lg leading-8 text-slate-300">{storyToday}</p>
+              <p className="font-headline text-2xl italic leading-relaxed md:text-3xl">
+                &ldquo;{founderQuote}&rdquo;
+              </p>
+            </div>
+            <ul className="space-y-4 lg:col-span-5">
+              {storyPillars.map((pillar) => (
+                <li
+                  key={pillar}
+                  className="rounded-2xl bg-white/10 px-6 py-5 font-headline text-xl font-bold text-secondary-fixed"
+                >
+                  {pillar}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </FadeIn>
 
         <div className="grid gap-8 md:grid-cols-3">
           {companyCards.map((card, index) => {
