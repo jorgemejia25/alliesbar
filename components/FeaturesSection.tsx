@@ -2,28 +2,28 @@ import FadeIn from "./FadeIn";
 
 const features = [
   {
-    icon: "camera",
-    title: "AI Bottle Recognition",
+    icon: "photo_camera",
+    title: "AI Bottle Measurement",
     description:
-      "Simply point your camera. Our AI identifies label, volume, and brand instantly.",
+      "A photo estimates what is left in the bottle. No scales or ruler needed.",
   },
   {
-    icon: "qr_code_scanner",
-    title: "QR Integration",
+    icon: "receipt_long",
+    title: "AI Invoice",
     description:
-      "Scan vendor QR codes to auto-populate invoices and update stock levels.",
+      "Photograph or upload an invoice. AI reads the products, and inventory updates when you confirm.",
   },
   {
-    icon: "sync",
-    title: "Any Device Access",
+    icon: "qr_code_2",
+    title: "QR Bottle Tracking",
     description:
-      "Use any browser on your phone in the cellar or your desktop in the office — your inventory stays in sync.",
+      "Print QR labels for individual liquor bottles and follow each one from receiving to finished.",
   },
   {
-    icon: "psychology",
-    title: "Allies",
+    icon: "devices",
+    title: "Any Device",
     description:
-      "Allies is always on for data analysis and troubleshooting.",
+      "Phones, tablets and computers with a browser. Nothing to install, and the whole team can count at once.",
   },
 ];
 

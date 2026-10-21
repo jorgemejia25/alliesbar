@@ -82,10 +82,10 @@ export default function Footer() {
             +1 (470) 301-7614
           </a>
           <a
-            href="mailto:alliesbar@gmail.com"
+            href="mailto:info@alliesbeverage.com"
             className="text-slate-400 hover:text-yellow-500 transition-colors duration-300 break-all"
           >
-            alliesbar@gmail.com
+            info@alliesbeverage.com
           </a>
         </div>
       </div>

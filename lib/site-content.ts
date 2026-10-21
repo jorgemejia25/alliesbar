@@ -60,8 +60,8 @@ export const categorySurcharge = {
 export const contactDetails = {
   phone: "+1 (470) 301-7614",
   phoneHref: "tel:+14703017614",
-  email: "alliesbar@gmail.com",
-  emailHref: "mailto:alliesbar@gmail.com",
+  email: "info@alliesbeverage.com",
+  emailHref: "mailto:info@alliesbeverage.com",
 };
 
 export const contactSubjects = [
