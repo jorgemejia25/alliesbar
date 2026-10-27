@@ -15,6 +15,15 @@ const BUFFER = 0.03;
 const CLIP_TOP = CONTENT_TOP - BUFFER;        // 0.267
 const CLIP_HEIGHT = CONTENT_HEIGHT + BUFFER * 2; // 0.408
 
+// Impact figures from the Case Study (The Starling Atlanta Midtown, Sep 2026),
+// so a first-time visitor sees what the product does before scrolling.
+const CASE_STUDY = [
+  { value: "3 h", label: "Full inventory count", before: "15 h" },
+  { value: "< 5 min", label: "Final report", before: "4+ h" },
+  { value: "1–2", label: "Stockouts a month", before: "6–10" },
+  { value: "Daily", label: "Beverage COGS", before: "Month-end" },
+];
+
 function GoldLogo({ maxWidth = 520 }: { maxWidth?: number }) {
   return (
     <div
@@ -61,7 +70,7 @@ function GoldLogo({ maxWidth = 520 }: { maxWidth?: number }) {
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden font-body">
+    <section className="relative min-h-svh flex items-center justify-center overflow-hidden font-body py-28">
 
       {/* ── Background ── */}
       <div className="absolute inset-0 z-0 bg-[#171b28]">
@@ -125,6 +134,29 @@ export default function HeroSection() {
         >
           Get Started
         </Link>
+
+        {/* Case Study impact */}
+        <div className="w-full mt-6">
+          <p className="mb-3 text-[9px] font-medium uppercase tracking-[0.25em] text-[#fed65b]/70">
+            Case study · The Starling Atlanta Midtown
+          </p>
+          {/* gap-px over a light background draws the dividers on any column count */}
+          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+            {CASE_STUDY.map((item) => (
+              <div key={item.label} className="flex flex-col items-center gap-1 px-3 py-4 bg-[#171b28]/90 backdrop-blur-sm">
+                <dd className="order-1 font-headline text-2xl md:text-3xl text-white leading-none">
+                  {item.value}
+                </dd>
+                <dt className="order-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-300/90">
+                  {item.label}
+                </dt>
+                <span className="order-3 text-[10px] text-slate-400/70">
+                  Before: {item.before}
+                </span>
+              </div>
+            ))}
+          </dl>
+        </div>
       </FadeIn>
     </section>
   );

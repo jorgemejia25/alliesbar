@@ -1,3 +1,4 @@
+import DashboardShowcase from "./DashboardShowcase";
 import FadeIn from "./FadeIn";
 
 export default function ResponsiveSection() {
@@ -22,21 +23,10 @@ export default function ResponsiveSection() {
           </p>
         </FadeIn>
 
-        {/* Photo */}
-        <div className="mx-auto max-w-5xl md:max-w-[680px] lg:max-w-[720px]">
-
-          <FadeIn direction="left" delay={0.2} className="relative overflow-hidden rounded-2xl aspect-[3/4] sm:aspect-[4/3] md:aspect-[3/4] group">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/IMG_6173.png"
-              alt="Bar owner at the marble counter"
-              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            />
-            {/* subtle bottom vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none rounded-2xl" />
-          </FadeIn>
-
-        </div>
+        {/* Dashboard: the cards appear one by one and explain themselves */}
+        <FadeIn direction="up" delay={0.1}>
+          <DashboardShowcase />
+        </FadeIn>
 
         {/* Bottom caption row */}
         <FadeIn direction="up" delay={0.8} className="mt-6 flex items-center gap-4">
