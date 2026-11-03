@@ -4,7 +4,8 @@ import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, CreditCard, FileText, LoaderCircle, LockKeyhole, Send } from "lucide-react";
 
-const API_URL = "https://api.alliesbar.com";
+import { API_URL, apiErrorMessage } from "@/lib/api";
+
 type Plan = "initial" | "upgrade";
 // Card goes through Stripe; a check is arranged with the team, who activates the venue when it arrives.
 type Method = "card" | "check";
@@ -13,12 +14,6 @@ const planDetails: Record<Plan, { label: string; price: string; period: string; 
   initial: { label: "Initial license", price: "$299", period: "per month", upcs: "Up to 1,000 distinct UPCs", short: "Initial · $299" },
   upgrade: { label: "Upgrade license", price: "$399", period: "per month", upcs: "1,001 – 10,000 distinct UPCs", short: "Upgrade · $399" },
 };
-
-/** Nest sends `message` as a string, or as a list for validation errors. */
-function errorMessage(body: { message?: string | string[] } | null): string | undefined {
-  const message = body?.message;
-  return Array.isArray(message) ? message.join(" ") : message;
-}
 
 export default function PaymentCheckout({ initialPlan, cancelled = false }: { initialPlan: Plan; cancelled?: boolean }) {
   const [plan, setPlan] = useState<Plan>(initialPlan);
@@ -54,7 +49,7 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
           body: JSON.stringify({ plan_type: plan, new_client: newClient, ...(notes ? { notes } : {}) }),
         });
         const body = await response.json();
-        if (!response.ok || !body.success) throw new Error(errorMessage(body) || fallback);
+        if (!response.ok || !body.success) throw new Error(apiErrorMessage(body) || fallback);
         setCheckSent({ email: String(newClient.email) });
         setLoading(false);
         return;
@@ -66,7 +61,7 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
       });
       const body = await response.json();
       if (!response.ok || !body.checkoutUrl) {
-        throw new Error(errorMessage(body) || fallback);
+        throw new Error(apiErrorMessage(body) || fallback);
       }
       window.location.assign(body.checkoutUrl);
     } catch (cause) {
@@ -157,7 +152,17 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
           </div>
           {cancelled && !error && <p className="mb-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-800">Checkout was cancelled. You can try again whenever you&apos;re ready.</p>}
           {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
-          <button disabled={loading} className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#171b28] px-6 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition hover:bg-[#29334a] disabled:cursor-wait disabled:opacity-70">
+          <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-slate-700">
+            <input required type="checkbox" name="accept_terms" className="mt-1 size-4 shrink-0 accent-[#171b28]" />
+            <span>
+              I have read and agree to the{" "}
+              <Link href="/terms" target="_blank" className="font-semibold text-slate-900 underline underline-offset-2 hover:text-[#b89232]">
+                Terms and Conditions
+              </Link>
+              .
+            </span>
+          </label>
+          <button disabled={loading} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#171b28] px-6 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition hover:bg-[#29334a] disabled:cursor-wait disabled:opacity-70">
             {loading ? <LoaderCircle className="animate-spin" size={18} /> : method === "check" ? <Send size={18} /> : <LockKeyhole size={18} />}
             {method === "check" ? "Request check payment" : "Continue to Stripe"}
           </button>

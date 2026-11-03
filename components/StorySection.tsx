@@ -6,24 +6,18 @@ export default function StorySection() {
     <section className="py-32 bg-surface-container-low overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* Images column */}
+          {/* The product it became */}
           <FadeIn direction="right" className="order-2 lg:order-1">
-            <div className="relative">
-              {/* Primary image */}
+            <div className="relative flex aspect-square items-start justify-center gap-4 overflow-hidden rounded-2xl bg-[#171b28] px-5 pt-8 shadow-2xl sm:gap-6 sm:px-8 sm:pt-10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="w-full aspect-[4/5] object-cover object-[center_70%] rounded-2xl shadow-2xl relative z-10"
-                src="/founders.jpg"
-                alt="Timothy and Alejandra, the founders of Allie's, seated on a hotel staircase"
+                className="w-1/2 rounded-[1.75rem] border-[6px] border-black/60 shadow-2xl"
+                src="/app/dashboard.jpg"
+                alt="The Allie's Dashboard on a phone, with under-PAR products and recent activity"
               />
-
-              {/* Decorative yellow background shape */}
-              <div className="absolute -top-10 -right-10 w-72 h-96 bg-secondary-fixed rounded-2xl -z-0 hidden lg:block" />
-
-              {/* Secondary floating image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="absolute -bottom-16 -right-16 w-52 aspect-[9/16] object-cover object-top rounded-[1.75rem] shadow-2xl z-20 border-[6px] border-[#171b28] hidden lg:block"
+                className="mt-10 w-1/2 rounded-[1.75rem] border-[6px] border-black/60 shadow-2xl"
                 src="/app/measure.jpg"
                 alt="Allie's measuring the liquid left in a bottle from a photo"
               />
