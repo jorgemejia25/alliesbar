@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import BookDemo from "./BookDemo";
+
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Pricing", href: "/pricing" },
@@ -109,6 +111,11 @@ export default function Navbar() {
           {/* Right side: CTA (desktop) + hamburger (mobile) (Right aligned) */}
           <div className="justify-self-end flex items-center gap-4">
             {/* Desktop CTAs */}
+            <BookDemo
+              className={`hidden lg:block font-bold transition-all duration-300 hover:opacity-80 ${
+                isScrolled ? "text-slate-700 dark:text-slate-200" : "text-white drop-shadow-md"
+              }`}
+            />
             <Link
               href="/pricing"
               className={`hidden lg:block px-6 py-2 rounded-lg font-bold hover:opacity-80 active:scale-95 transition-all duration-300 ${
@@ -202,6 +209,10 @@ export default function Navbar() {
 
         {/* Sidebar footer CTAs */}
         <div className="flex flex-col gap-3 border-t border-slate-100 px-6 py-6 dark:border-slate-800">
+          <BookDemo
+            className="block w-full rounded-xl border border-slate-300 py-3 text-center font-semibold text-slate-900 transition-all hover:bg-slate-50 active:scale-95 dark:text-slate-50"
+            onOpen={() => setOpen(false)}
+          />
           <Link
             href="/pricing"
             className="block text-center w-full py-3 bg-primary-container text-on-primary font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all"

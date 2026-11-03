@@ -2,6 +2,7 @@
 
 import FadeIn from "./FadeIn";
 import Link from "next/link";
+import BookDemo from "./BookDemo";
 
 // SVG viewBox is 1024×1024. Logo content occupies:
 //   top:    y=304  → 29.7% from top
@@ -127,13 +128,16 @@ export default function HeroSection() {
           intelligence and professional bar management for the modern curator.
         </p>
 
-        {/* CTA */}
-        <Link
-          href="/pricing"
-          className="inline-block px-9 py-3.5 bg-[#fed65b] text-[#171b28] text-[10px] font-bold tracking-[0.18em] uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all duration-200 shadow-[0_0_50px_rgba(254,214,91,0.15)] hover:shadow-[0_0_70px_rgba(254,214,91,0.3)]"
-        >
-          Get Started
-        </Link>
+        {/* CTAs */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/pricing"
+            className="inline-block px-9 py-3.5 bg-[#fed65b] text-[#171b28] text-[10px] font-bold tracking-[0.18em] uppercase rounded-full hover:bg-[#e9c349] active:scale-95 transition-all duration-200 shadow-[0_0_50px_rgba(254,214,91,0.15)] hover:shadow-[0_0_70px_rgba(254,214,91,0.3)]"
+          >
+            Get Started
+          </Link>
+          <BookDemo className="inline-block px-9 py-3.5 border border-white/30 text-white text-[10px] font-bold tracking-[0.18em] uppercase rounded-full hover:bg-white/10 active:scale-95 transition-all duration-200" />
+        </div>
 
         {/* Case Study impact */}
         <div className="w-full mt-6">
