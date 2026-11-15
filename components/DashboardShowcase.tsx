@@ -1,13 +1,14 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 /**
  * Coded mock of the Allie's Dashboard (Overview), with the same cards as the
  * app: KPIs, operations panels and charts. They appear one by one, then the
- * highlight walks through them and the side panel explains what each one tells
- * you. Sample figures only — not a real venue.
+ * highlight walks through them and a panel right under the highlighted card's
+ * row explains what it tells you, so card and explanation are always read
+ * together. Sample figures only — not a real venue.
  */
 
 const NAVY = "#171b28";
@@ -264,6 +265,28 @@ const ROWS = [
 
 const CARDS = ROWS.flatMap((row) => row.cards);
 
+/** What the highlighted card tells you, on the line right below it. */
+function Explanation({ card, reduceMotion }: { card: ShowcaseCard; reduceMotion: boolean }) {
+  return (
+    <motion.li
+      initial={reduceMotion ? false : { opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="col-span-full"
+      aria-live="polite"
+    >
+      <div className="flex gap-3 rounded-xl bg-[#171b28] px-4 py-3.5 text-white sm:px-5 sm:py-4">
+        <span className="w-1 shrink-0 rounded-full bg-[#fed65b]" aria-hidden />
+        <div className="min-w-0">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#fed65b]">{card.label}</p>
+          <h3 className="mt-1 font-headline text-lg sm:text-xl leading-snug">{card.title}</h3>
+          <p className="mt-1 text-[13px] sm:text-sm leading-relaxed text-slate-300">{card.body}</p>
+        </div>
+      </div>
+    </motion.li>
+  );
+}
+
 const CYCLE_MS = 3200;
 const APPEAR_STEP_S = 0.1;
 
@@ -286,12 +309,10 @@ export default function DashboardShowcase() {
     setPaused(true);
   };
 
-  const current = CARDS[active];
-
   return (
-    <div ref={ref} className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-6 lg:gap-8 items-center">
+    <div ref={ref} className="flex flex-col gap-5">
       {/* Browser frame with the dashboard */}
-      <div className="order-2 lg:order-1 rounded-2xl border border-outline-variant/50 bg-white shadow-[0_30px_80px_-30px_rgba(23,27,40,0.35)] overflow-hidden">
+      <div className="rounded-2xl border border-outline-variant/50 bg-white shadow-[0_30px_80px_-30px_rgba(23,27,40,0.35)] overflow-hidden">
         <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
           <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
@@ -316,34 +337,39 @@ export default function DashboardShowcase() {
           {ROWS.map((row, r) => {
             const before = ROWS.slice(0, r).reduce((n, x) => n + x.cards.length, 0);
             return (
-              <ul key={row.cards[0].id} className={`grid gap-2 sm:gap-2.5 ${row.grid}`}>
+              // grid-flow-row-dense: the full-width explanation goes on the line
+              // after the highlighted card, and the cards after it backfill the
+              // gap, so the layout stays the same at any column count.
+              <ul key={row.cards[0].id} className={`grid grid-flow-row-dense gap-2 sm:gap-2.5 ${row.grid}`}>
                 {row.cards.map((card, c) => {
                   const i = before + c;
                   const on = i === active;
                   return (
-                    <motion.li
-                      key={card.id}
-                      initial={reduceMotion ? false : { opacity: 0, y: 14, scale: 0.97 }}
-                      animate={inView ? { opacity: 1, y: 0, scale: 1 } : undefined}
-                      transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.15 + i * APPEAR_STEP_S, ease: "easeOut" }}
-                      className="min-w-0"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => select(i)}
-                        aria-pressed={on}
-                        className={`block w-full h-full text-left rounded-xl border bg-white px-3 py-2.5 transition-all duration-300 ${
-                          on
-                            ? "border-[#e9c349] shadow-[0_0_0_3px_rgba(254,214,91,0.35)]"
-                            : "border-slate-200 hover:border-slate-300"
-                        }`}
+                    <Fragment key={card.id}>
+                      <motion.li
+                        initial={reduceMotion ? false : { opacity: 0, y: 14, scale: 0.97 }}
+                        animate={inView ? { opacity: 1, y: 0, scale: 1 } : undefined}
+                        transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.15 + i * APPEAR_STEP_S, ease: "easeOut" }}
+                        className="min-w-0"
                       >
-                        <span className="block truncate text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-                          {card.label}
-                        </span>
-                        {card.content}
-                      </button>
-                    </motion.li>
+                        <button
+                          type="button"
+                          onClick={() => select(i)}
+                          aria-pressed={on}
+                          className={`block w-full h-full text-left rounded-xl border bg-white px-3 py-2.5 transition-all duration-300 ${
+                            on
+                              ? "border-[#e9c349] shadow-[0_0_0_3px_rgba(254,214,91,0.35)]"
+                              : "border-slate-200 hover:border-slate-300"
+                          }`}
+                        >
+                          <span className="block truncate text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                            {card.label}
+                          </span>
+                          {card.content}
+                        </button>
+                      </motion.li>
+                      {on && <Explanation card={card} reduceMotion={!!reduceMotion} />}
+                    </Fragment>
                   );
                 })}
               </ul>
@@ -352,24 +378,8 @@ export default function DashboardShowcase() {
         </div>
       </div>
 
-      {/* What the highlighted card tells you. First on phones: the dashboard is
-          long there, and this stays next to the top of it. */}
-      <div className="order-1 lg:order-2 flex flex-col gap-4">
-        <div className="min-h-[176px] rounded-2xl bg-[#171b28] p-6 text-white">
-          <motion.div
-            key={current.id}
-            initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            aria-live="polite"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#fed65b]">{current.label}</p>
-            <h3 className="mt-2 font-headline text-2xl leading-snug">{current.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-300">{current.body}</p>
-          </motion.div>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5" role="group" aria-label="Dashboard cards">
+      <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-1.5" role="group" aria-label="Dashboard cards">
           {CARDS.map((card, i) => (
             <button
               key={card.id}
@@ -383,7 +393,7 @@ export default function DashboardShowcase() {
             />
           ))}
         </div>
-        <p className="text-center lg:text-left text-[11px] text-on-surface-variant/60">
+        <p className="text-center text-[11px] text-on-surface-variant/60">
           Sample figures. Tap a card to read about it.
         </p>
       </div>

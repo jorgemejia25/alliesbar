@@ -1,8 +1,9 @@
 "use client";
 
-import type { FormEvent } from "react";
-import { Mail, MessageSquareText, Phone, Send } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { CheckCircle2, LoaderCircle, Mail, MessageSquareText, Phone, Send } from "lucide-react";
 
+import { API_URL, apiErrorMessage } from "@/lib/api";
 import {
   contactDetails,
   contactSubjects,
@@ -11,27 +12,43 @@ import {
 
 import FadeIn from "./FadeIn";
 
-function handleSubmit(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-
-  const form = new FormData(event.currentTarget);
-  const name = String(form.get("name") ?? "");
-  const email = String(form.get("email") ?? "");
-  const subject = String(form.get("subject") ?? "");
-  const message = String(form.get("message") ?? "");
-
-  const body = encodeURIComponent(
-    [`Name: ${name}`, `Email: ${email}`, `Subject: ${subject}`, "", message].join(
-      "\n",
-    ),
-  );
-
-  window.location.href = `${contactDetails.emailHref}?subject=${encodeURIComponent(
-    `Allie's inquiry: ${subject}`,
-  )}&body=${body}`;
-}
+const FALLBACK_ERROR = `We could not send your message. Please try again, or call us at ${contactDetails.phone}.`;
 
 export default function ContactSection() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sentTo, setSentTo] = useState<string | null>(null);
+
+  // The message goes straight to the Allies inbox from the site, without
+  // opening the visitor's mail app.
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    setError(null);
+    const form = new FormData(event.currentTarget);
+    const email = String(form.get("email") ?? "");
+    try {
+      const response = await fetch(`${API_URL}/contact-messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.get("name"),
+          email,
+          subject: form.get("subject"),
+          message: form.get("message"),
+          website: form.get("website"),
+        }),
+      });
+      const body = await response.json().catch(() => null);
+      if (!response.ok || !body?.success) throw new Error(apiErrorMessage(body) || FALLBACK_ERROR);
+      setSentTo(email);
+    } catch (cause) {
+      setError(cause instanceof Error && cause.message !== "Failed to fetch" ? cause.message : FALLBACK_ERROR);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section
       id="contact"
@@ -125,17 +142,40 @@ export default function ContactSection() {
           <div className="lg:col-span-7">
             <FadeIn direction="left" duration={0.6}>
               <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg dark:border-slate-800 dark:bg-slate-900 md:p-10">
+                {sentTo ? (
+                  <div role="status" className="flex flex-col items-start gap-3 py-6">
+                    <CheckCircle2 aria-hidden className="text-emerald-600" size={40} />
+                    <h2 className="font-headline text-2xl font-bold text-primary md:text-3xl">
+                      Message sent.
+                    </h2>
+                    <p className="leading-7 text-on-surface-variant">
+                      Thanks for writing. We&apos;ll reply to{" "}
+                      <span className="font-semibold text-primary">{sentTo}</span> as soon as we can.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setSentTo(null)}
+                      className="mt-2 font-bold text-secondary underline-offset-4 hover:underline"
+                    >
+                      Send another message
+                    </button>
+                  </div>
+                ) : (
+                <>
                 <h2 className="mb-8 font-headline text-2xl font-bold text-primary md:text-3xl">
                   Send us a message
                 </h2>
 
                 <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+                  {/* Left empty by people; bots fill it in. */}
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
                   <div className="grid gap-6 md:grid-cols-2">
                     <label className="flex flex-col gap-2 text-sm font-bold text-on-surface-variant">
                       Your Name
                       <input
                         type="text"
                         name="name"
+                        maxLength={120}
                         className="w-full rounded-xl border-2 border-slate-200 bg-surface-container-lowest px-4 py-3.5 font-medium transition-all focus:border-secondary-container focus:outline-none focus:ring-4 focus:ring-secondary-container/20 dark:border-slate-800"
                         placeholder="John Doe"
                         required
@@ -147,6 +187,7 @@ export default function ContactSection() {
                       <input
                         type="email"
                         name="email"
+                        maxLength={160}
                         className="w-full rounded-xl border-2 border-slate-200 bg-surface-container-lowest px-4 py-3.5 font-medium transition-all focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-primary-container/20 dark:border-slate-800"
                         placeholder="john@example.com"
                         required
@@ -174,6 +215,7 @@ export default function ContactSection() {
                     Write message
                     <textarea
                       name="message"
+                      maxLength={5000}
                       rows={5}
                       className="w-full resize-y rounded-xl border-2 border-slate-200 bg-surface-container-lowest px-4 py-3.5 font-medium transition-all focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-primary-container/20 dark:border-slate-800"
                       placeholder="Tell us more about your inquiry..."
@@ -181,14 +223,23 @@ export default function ContactSection() {
                     />
                   </label>
 
+                  {error && (
+                    <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-container px-8 py-4 font-bold text-on-primary transition-all hover:opacity-90 active:scale-95 md:w-auto"
+                    disabled={loading}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-container px-8 py-4 font-bold text-on-primary transition-all hover:opacity-90 active:scale-95 disabled:cursor-wait disabled:opacity-70 md:w-auto"
                   >
                     Send Message
-                    <Send aria-hidden size={18} />
+                    {loading ? <LoaderCircle aria-hidden className="animate-spin" size={18} /> : <Send aria-hidden size={18} />}
                   </button>
                 </form>
+                </>
+                )}
               </article>
             </FadeIn>
           </div>

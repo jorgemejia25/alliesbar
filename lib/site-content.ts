@@ -28,27 +28,40 @@ export const pricingFeatures = [
   "Free updates",
 ];
 
-export const pricingPlans = [
-  {
-    id: "initial",
-    name: "Initial license",
-    price: "$299",
-    period: "Per month",
-    eyebrow: "Up to 1,000 UPCs",
-    upcRange: "1 – 1,000 distinct UPCs",
-    description: "Includes up to 1,000 distinct UPCs.",
-  },
-  {
-    id: "upgrade",
-    name: "Upgrade license",
-    price: "$399",
-    period: "Per month",
-    eyebrow: "1,001 – 10,000 UPCs",
-    upcRange: "1,001 – 10,000 distinct UPCs",
-    description:
-      "For 1,001–10,000 UPCs. Above 10,000, we review and quote separately.",
-  },
-];
+/** The one license sold online. The UPC upgrade is added later, from the app. */
+export const license = {
+  name: "Allie's License",
+  price: "$299",
+  period: "Per month",
+  eyebrow: "One venue",
+  upcLimit: "Up to 1,000 distinct UPCs",
+  description: "Everything one bar, restaurant or hotel outlet needs to run its beverage inventory.",
+};
+
+/** Not purchasable on its own: an add-on for venues that outgrow 1,000 UPCs. */
+export const upcUpgrade = {
+  price: "+$100",
+  period: "per month",
+  total: "$399",
+  upcLimit: "up to 10,000 distinct UPCs",
+};
+
+export const enterprisePlan = {
+  name: "Enterprise",
+  eyebrow: "Several venues",
+  price: "$299",
+  period: "per venue / month",
+  description:
+    "For groups that pay for several venues in one transaction and need one master user to manage all of them.",
+  points: [
+    "One payment for all your venues",
+    "One master login to switch between every venue",
+    "Every venue set up for you after payment",
+  ],
+  /** Below this, the regular license is the right purchase. */
+  minVenues: 2,
+  maxVenues: 100,
+};
 
 export const categorySurcharge = {
   price: "$49",
@@ -141,14 +154,14 @@ export const storyOrigin = [
 export const storyDialogue = [
   { speaker: "I asked", line: "What if I could build something better?" },
   {
-    speaker: "He laughed",
+    speaker: "He said",
     line: "How? You don't know my business or anything about beverage inventory.",
   },
   {
     speaker: "I replied",
     line: "You're right. But I understand processes, technology, and how to use AI to solve problems. You know the industry. I know how to build solutions.",
   },
-  { speaker: "He said", line: "Okay." },
+  { speaker: "He answered", line: "Okay." },
 ];
 
 export const storyToday =

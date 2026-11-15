@@ -1,27 +1,25 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, CreditCard, FileText, LoaderCircle, LockKeyhole, Send } from "lucide-react";
 
 import { API_URL, apiErrorMessage } from "@/lib/api";
+import { license, upcUpgrade } from "@/lib/site-content";
 
-type Plan = "initial" | "upgrade";
 // Card goes through Stripe; a check is arranged with the team, who activates the venue when it arrives.
 type Method = "card" | "check";
 
-const planDetails: Record<Plan, { label: string; price: string; period: string; upcs: string; short: string }> = {
-  initial: { label: "Initial license", price: "$299", period: "per month", upcs: "Up to 1,000 distinct UPCs", short: "Initial · $299" },
-  upgrade: { label: "Upgrade license", price: "$399", period: "per month", upcs: "1,001 – 10,000 distinct UPCs", short: "Upgrade · $399" },
-};
+// The only plan sold online. The UPC upgrade is added later from the app, and
+// groups with several venues buy through /enterprise.
+const PLAN = "initial";
+const detail = { label: "Allie's license", price: license.price, period: "per month", upcs: license.upcLimit };
 
-export default function PaymentCheckout({ initialPlan, cancelled = false }: { initialPlan: Plan; cancelled?: boolean }) {
-  const [plan, setPlan] = useState<Plan>(initialPlan);
+export default function PaymentCheckout({ cancelled = false }: { cancelled?: boolean }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [method, setMethod] = useState<Method>("card");
   const [checkSent, setCheckSent] = useState<{ email: string } | null>(null);
-  const detail = useMemo(() => planDetails[plan], [plan]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,7 +44,7 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
         const response = await fetch(`${API_URL}/payments/check-request`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan_type: plan, new_client: newClient, ...(notes ? { notes } : {}) }),
+          body: JSON.stringify({ plan_type: PLAN, new_client: newClient, ...(notes ? { notes } : {}) }),
         });
         const body = await response.json();
         if (!response.ok || !body.success) throw new Error(apiErrorMessage(body) || fallback);
@@ -57,7 +55,7 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
       const response = await fetch(`${API_URL}/payments/checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan_type: plan, new_client: newClient }),
+        body: JSON.stringify({ plan_type: PLAN, new_client: newClient }),
       });
       const body = await response.json();
       if (!response.ok || !body.checkoutUrl) {
@@ -71,7 +69,7 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
   }
 
   return (
-    <section className="min-h-screen bg-[#171b28] px-6 py-16 text-white md:py-24">
+    <section className="min-h-screen bg-[#171b28] px-6 py-16 font-body text-white md:py-24">
       <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <aside className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-sm">
           <Link href="/pricing" className="inline-flex items-center gap-2 text-sm font-semibold text-[#fed65b] hover:text-white">
@@ -81,15 +79,25 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
           <h1 className="mt-4 font-headline text-4xl leading-tight">Start with Allies.</h1>
           <p className="mt-4 leading-7 text-slate-300">
             {method === "check"
-              ? "Choose a plan and enter your venue details. We'll send you the check instructions, and your venue account is activated as soon as your check arrives."
-              : "Choose a plan, enter your venue details, then complete payment securely with Stripe. Your venue account is created automatically."}
+              ? "Enter your venue details. We'll send you the check instructions, and your venue account is activated as soon as your check arrives."
+              : "Enter your venue details, then complete payment securely with Stripe. Your venue account is created automatically."}
           </p>
           <div className="mt-10 rounded-2xl bg-[#fed65b] p-6 text-[#171b28]">
             <p className="text-xs font-bold uppercase tracking-[0.18em]">Selected plan</p>
             <p className="mt-3 font-headline text-3xl font-bold">{detail.label}</p>
             <p className="mt-1 text-lg font-semibold">{detail.price} <span className="text-sm font-medium">{detail.period}</span></p>
             <p className="mt-3 text-sm font-semibold">{detail.upcs}</p>
+            <p className="mt-3 text-xs leading-5">
+              Need more UPCs later? The upgrade adds {upcUpgrade.upcLimit} for {upcUpgrade.price} {upcUpgrade.period} ({upcUpgrade.total}/month in total).
+            </p>
           </div>
+          <p className="mt-6 text-sm leading-6 text-slate-300">
+            Several venues?{" "}
+            <Link href="/enterprise" className="font-semibold text-[#fed65b] underline-offset-4 hover:underline">
+              Buy them together with Enterprise
+            </Link>
+            .
+          </p>
         </aside>
 
         {checkSent ? (
@@ -106,13 +114,6 @@ export default function PaymentCheckout({ initialPlan, cancelled = false }: { in
           </div>
         ) : (
         <form onSubmit={submit} className="rounded-3xl bg-white p-7 text-slate-900 shadow-2xl md:p-10">
-          <div className="mb-8 flex rounded-xl bg-slate-100 p-1">
-            {(["initial", "upgrade"] as Plan[]).map((value) => (
-              <button key={value} type="button" onClick={() => setPlan(value)} className={`flex-1 rounded-lg px-3 py-3 text-sm font-bold transition ${plan === value ? "bg-[#171b28] text-white shadow" : "text-slate-600"}`}>
-                {planDetails[value].short}
-              </button>
-            ))}
-          </div>
           <fieldset className="mb-8">
             <legend className="mb-3 text-sm font-semibold">Payment method</legend>
             <div className="grid grid-cols-2 gap-3">
