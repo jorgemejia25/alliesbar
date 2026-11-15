@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowRight, Barcode, CheckCircle2, Globe2, LayoutGrid, ScanBarcode, Users } from "lucide-react";
+import { ArrowRight, Barcode, Building2, CheckCircle2, Globe2, LayoutGrid, ScanBarcode, Users } from "lucide-react";
 
-import { categorySurcharge, pricingFeatures, pricingPlans } from "@/lib/site-content";
+import { categorySurcharge, enterprisePlan, license, pricingFeatures, upcUpgrade } from "@/lib/site-content";
 
 import FadeIn from "./FadeIn";
 
@@ -37,80 +37,140 @@ export default function PricingSection() {
               Simple Pricing Plan
             </p>
             <h1 className="mb-4 font-headline text-4xl leading-tight text-primary md:text-5xl">
-              Select your license
+              Choose your plan
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
-              Two licenses based on how many distinct UPCs you track. Both include
-              the complete Allie&apos;s inventory system, label printing access,
-              documentation, support, and future updates.
+              One license per venue, with the complete Allie&apos;s inventory
+              system, label printing access, documentation, support, and future
+              updates. Running several venues? Enterprise covers all of them in one
+              payment.
             </p>
           </div>
         </FadeIn>
 
         <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
-          {pricingPlans.map((plan, index) => (
-            <FadeIn key={plan.name} direction="up" duration={0.55 + index * 0.15}>
-              <article className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-                <div className="mb-8 flex items-start justify-between gap-4">
-                  <div>
-                    <span className="mb-4 inline-flex rounded-full bg-secondary-fixed px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-on-secondary-fixed">
-                      {plan.eyebrow}
-                    </span>
-                    <h2 className="font-headline text-3xl font-bold text-primary">
-                      {plan.name}
-                    </h2>
-                  </div>
-                  <div className="rounded-2xl bg-surface-container p-3 text-secondary">
-                    <CheckCircle2 aria-hidden size={26} />
-                  </div>
+          <FadeIn direction="up" duration={0.55}>
+            <article className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+              <div className="mb-8 flex items-start justify-between gap-4">
+                <div>
+                  <span className="mb-4 inline-flex rounded-full bg-secondary-fixed px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-on-secondary-fixed">
+                    {license.eyebrow}
+                  </span>
+                  <h2 className="font-headline text-3xl font-bold text-primary">
+                    {license.name}
+                  </h2>
                 </div>
-
-                <div className="mb-6">
-                  <div className="flex flex-wrap items-end gap-2">
-                    <span className="text-5xl font-bold tracking-tight text-primary">
-                      {plan.price}
-                    </span>
-                    <span className="pb-2 font-semibold text-on-surface-variant">
-                      / {plan.period}
-                    </span>
-                  </div>
-                  <div className="mt-5 flex items-center gap-3 rounded-2xl bg-surface-container-low px-4 py-3">
-                    <Barcode aria-hidden size={22} className="shrink-0 text-secondary" />
-                    <span className="font-bold text-primary">{plan.upcRange}</span>
-                  </div>
-                  <p className="mt-3 min-h-12 text-sm font-medium leading-6 text-on-surface-variant">
-                    {plan.description}
-                  </p>
+                <div className="rounded-2xl bg-surface-container p-3 text-secondary">
+                  <CheckCircle2 aria-hidden size={26} />
                 </div>
+              </div>
 
-                <div className="mb-8 grow">
-                  <p className="mb-4 font-bold text-primary">Includes:</p>
-                  <ul className="flex flex-col gap-4">
-                    {pricingFeatures.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle2
-                          aria-hidden
-                          size={20}
-                          className="mt-0.5 shrink-0 text-secondary"
-                        />
-                        <span className="font-medium text-on-surface-variant">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="mb-6">
+                <div className="flex flex-wrap items-end gap-2">
+                  <span className="text-5xl font-bold tracking-tight text-primary">
+                    {license.price}
+                  </span>
+                  <span className="pb-2 font-semibold text-on-surface-variant">
+                    / {license.period}
+                  </span>
                 </div>
+                <div className="mt-5 flex items-center gap-3 rounded-2xl bg-surface-container-low px-4 py-3">
+                  <Barcode aria-hidden size={22} className="shrink-0 text-secondary" />
+                  <span className="font-bold text-primary">{license.upcLimit}</span>
+                </div>
+                <p className="mt-3 text-sm font-medium leading-6 text-on-surface-variant">
+                  {license.description}
+                </p>
+                <p className="mt-3 rounded-2xl border border-dashed border-slate-300 px-4 py-3 text-sm leading-6 text-on-surface-variant dark:border-slate-700">
+                  <span className="font-bold text-primary">Need more UPCs?</span>{" "}
+                  Add the UPC upgrade for {upcUpgrade.price} {upcUpgrade.period}: {upcUpgrade.total}/month
+                  in total for {upcUpgrade.upcLimit}.
+                </p>
+              </div>
 
-                <a
-                  href={`/payment?plan=${plan.id}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-container px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-on-primary transition-all hover:opacity-90 active:scale-95"
-                >
-                  Purchase Plan
-                  <ArrowRight aria-hidden size={18} />
-                </a>
-              </article>
-            </FadeIn>
-          ))}
+              <div className="mb-8 grow">
+                <p className="mb-4 font-bold text-primary">Includes:</p>
+                <ul className="flex flex-col gap-4">
+                  {pricingFeatures.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <CheckCircle2
+                        aria-hidden
+                        size={20}
+                        className="mt-0.5 shrink-0 text-secondary"
+                      />
+                      <span className="font-medium text-on-surface-variant">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a
+                href="/payment"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-container px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-on-primary transition-all hover:opacity-90 active:scale-95"
+              >
+                Purchase License
+                <ArrowRight aria-hidden size={18} />
+              </a>
+            </article>
+          </FadeIn>
+
+          <FadeIn direction="up" duration={0.7}>
+            <article className="flex h-full flex-col rounded-3xl bg-[#171b28] p-8 text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="mb-8 flex items-start justify-between gap-4">
+                <div>
+                  <span className="mb-4 inline-flex rounded-full bg-[#fed65b] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#171b28]">
+                    {enterprisePlan.eyebrow}
+                  </span>
+                  <h2 className="font-headline text-3xl font-bold">
+                    {enterprisePlan.name}
+                  </h2>
+                </div>
+                <div className="rounded-2xl bg-white/10 p-3 text-[#fed65b]">
+                  <Building2 aria-hidden size={26} />
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex flex-wrap items-end gap-2">
+                  <span className="text-5xl font-bold tracking-tight">
+                    {enterprisePlan.price}
+                  </span>
+                  <span className="pb-2 font-semibold text-slate-300">
+                    / {enterprisePlan.period}
+                  </span>
+                </div>
+                <div className="mt-5 flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3">
+                  <Barcode aria-hidden size={22} className="shrink-0 text-[#fed65b]" />
+                  <span className="font-bold">{license.upcLimit} per venue</span>
+                </div>
+                <p className="mt-3 text-sm font-medium leading-6 text-slate-300">
+                  {enterprisePlan.description}
+                </p>
+              </div>
+
+              <div className="mb-8 grow">
+                <p className="mb-4 font-bold">Every venue gets the full license, plus:</p>
+                <ul className="flex flex-col gap-4">
+                  {enterprisePlan.points.map((point) => (
+                    <li key={point} className="flex items-start gap-3">
+                      <CheckCircle2 aria-hidden size={20} className="mt-0.5 shrink-0 text-[#fed65b]" />
+                      <span className="font-medium text-slate-200">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a
+                href="/enterprise"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#fed65b] px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-[#171b28] transition-all hover:bg-[#e9c349] active:scale-95"
+              >
+                Get Enterprise
+                <ArrowRight aria-hidden size={18} />
+              </a>
+            </article>
+          </FadeIn>
         </div>
 
         <FadeIn direction="up">

@@ -102,7 +102,7 @@ export default function HeroSection() {
         {/* Eyebrow badge */}
         <span className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[#fed65b]/60 font-medium tracking-[0.2em] text-[9px] uppercase bg-[#fed65b]/5 rounded-full border border-[#fed65b]/10">
           <span className="w-[3px] h-[3px] rounded-full bg-[#fed65b]/70 inline-block" />
-          The Gold Standard in Inventory
+          Beverage Inventory System
         </span>
 
         {/* Gold logo — responsive, CSS-only sizing */}
@@ -122,10 +122,17 @@ export default function HeroSection() {
         {/* Thin gold rule */}
         <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#fed65b]/40 to-transparent" />
 
-        {/* Subheadline */}
-        <p className="max-w-md text-slate-300/80 text-[13px] sm:text-sm md:text-[15px] leading-relaxed font-light -mt-1">
-          Elevate your hospitality operations. A seamless blend of artificial
-          intelligence and professional bar management for the modern curator.
+        {/* What Allies is, in one line, before anything else */}
+        <h1 className="font-headline text-[26px] sm:text-3xl md:text-4xl leading-tight text-white -mt-1">
+          The beverage inventory system for{" "}
+          <span className="italic text-[#fed65b]">hotels, restaurants and bars</span>
+        </h1>
+
+        <p className="max-w-lg text-slate-300/85 text-[13px] sm:text-sm md:text-[15px] leading-relaxed font-light">
+          Allie&apos;s tracks every bottle of liquor, wine and beer from receiving
+          to the last pour: AI measures what&apos;s left in each bottle from a
+          photo, your team counts together from any device, and you see stock,
+          usage and beverage cost every day.
         </p>
 
         {/* CTAs */}

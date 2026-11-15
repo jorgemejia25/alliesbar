@@ -35,7 +35,7 @@ export default function PaymentResult({ sessionId }: { sessionId: string }) {
     : null;
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-[#171b28] px-6 py-16 text-white">
+    <section className="flex min-h-screen items-center justify-center bg-[#171b28] px-6 py-16 font-body text-white">
       <div className="w-full max-w-lg rounded-3xl bg-white p-10 text-center text-slate-900 shadow-2xl">
         {result.status === "loading" && (
           <>
