@@ -29,7 +29,7 @@ export default function UsSection() {
               Who we are
             </p>
             <h1 className="mb-6 font-headline text-5xl leading-tight text-primary md:text-6xl">
-              The team behind Allie&apos;s Beverage
+              The team behind Allie&apos;s Beverage Inventory System
             </h1>
             <p className="text-xl font-medium leading-relaxed text-on-surface-variant md:text-2xl">
               &ldquo;{storyQuestion}&rdquo; That simple question changed
@@ -44,7 +44,7 @@ export default function UsSection() {
               <figure className="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl">
                 <Image
                   src="/founders.jpg"
-                  alt="Timothy and Alejandra, the founders of Allie's, seated on a hotel staircase"
+                  alt="Timothy and Alejandra, the founders of Allie's Beverage Inventory System, seated on a hotel staircase"
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover object-[center_70%] transition-transform duration-700 group-hover:scale-105"
@@ -115,7 +115,7 @@ export default function UsSection() {
                     ))}
                   </dl>
                   <p className="mt-6 text-lg font-bold text-primary">
-                    And that was the beginning of Allie&apos;s.
+                    And that was the beginning of Allie&apos;s Beverage Inventory System.
                   </p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function UsSection() {
           <div className="mb-28 grid items-center gap-10 rounded-3xl bg-primary-container p-8 text-white shadow-xl md:p-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-secondary-fixed">
-                Allie&apos;s today
+                Allie&apos;s Beverage Inventory System today
               </p>
               <p className="mb-6 text-lg leading-8 text-slate-300">{storyToday}</p>
               <p className="font-headline text-2xl italic leading-relaxed md:text-3xl">

@@ -13,13 +13,13 @@ export default function StorySection() {
               <img
                 className="w-1/2 rounded-[1.75rem] border-[6px] border-black/60 shadow-2xl"
                 src="/app/dashboard.jpg"
-                alt="The Allie's Dashboard on a phone, with under-PAR products and recent activity"
+                alt="The Allie's Beverage Inventory System Dashboard on a phone, with under-PAR products and recent activity"
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className="mt-10 w-1/2 rounded-[1.75rem] border-[6px] border-black/60 shadow-2xl"
                 src="/app/measure.jpg"
-                alt="Allie's measuring the liquid left in a bottle from a photo"
+                alt="Allie's Beverage Inventory System measuring the liquid left in a bottle from a photo"
               />
             </div>
           </FadeIn>
@@ -27,7 +27,7 @@ export default function StorySection() {
           {/* Text column */}
           <FadeIn direction="left" delay={0.2} className="order-1 lg:order-2 space-y-8">
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs">
-              The story behind Allie&apos;s
+              The story behind Allie&apos;s Beverage Inventory System
             </span>
             <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-primary leading-tight">
               &ldquo;What if we could{" "}
@@ -42,7 +42,7 @@ export default function StorySection() {
             </p>
             <p className="text-on-surface-variant text-lg leading-relaxed">
               He knew the industry. She knew processes, technology and AI.
-              Together, they built Allie&apos;s: a smarter, simpler way to
+              Together, they built Allie&apos;s Beverage Inventory System: a smarter, simpler way to
               manage beverage inventory, born from a real problem rather than
               a boardroom.
             </p>

@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="col-span-2 md:col-span-1">
           <Image
             src="/new-logo.svg"
-            alt="Allies Beverage Inventory System"
+            alt="Allie's Beverage Inventory System"
             width={100}
             height={100}
             className="h-10 w-auto mb-6"

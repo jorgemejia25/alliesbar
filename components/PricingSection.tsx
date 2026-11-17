@@ -40,7 +40,7 @@ export default function PricingSection() {
               Choose your plan
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
-              One license per venue, with the complete Allie&apos;s inventory
+              One license per venue, with the complete Allie&apos;s Beverage Inventory System
               system, label printing access, documentation, support, and future
               updates. Running several venues? Enterprise covers all of them in one
               payment.

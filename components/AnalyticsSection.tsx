@@ -49,7 +49,7 @@ export default function AnalyticsSection() {
           <div className="relative w-full max-w-[340px] aspect-[9/16] overflow-hidden rounded-[2.5rem] border-[8px] border-[#0d1019] bg-white shadow-2xl">
             <Image
               src="/app/dashboard.jpg"
-              alt="Dashboard in the Allie's app, with stock status and reorder alerts"
+              alt="Dashboard in the Allie's Beverage Inventory System app, with stock status and reorder alerts"
               fill
               sizes="340px"
               className="object-cover object-top"

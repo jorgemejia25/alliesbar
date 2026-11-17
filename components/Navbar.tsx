@@ -16,6 +16,18 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** The brand, always as "Allie's Beverage Inventory System": the name large, the rest under it. */
+function BrandName() {
+  return (
+    <Link href="/" className="flex flex-col leading-none" aria-label="Allie's Beverage Inventory System, home">
+      <span className="font-headline text-2xl tracking-tight">Allie&apos;s</span>
+      <span className="mt-0.5 whitespace-nowrap text-[8px] font-semibold uppercase tracking-[0.14em] opacity-80 sm:text-[9px] sm:tracking-[0.18em]">
+        Beverage Inventory System
+      </span>
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -67,13 +79,13 @@ export default function Navbar() {
         >
           {/* Logo (Left aligned) */}
           <div
-            className={`justify-self-start text-2xl font-headline tracking-tight transition-colors duration-300 ${
+            className={`justify-self-start transition-colors duration-300 ${
               isScrolled
                 ? "text-slate-900 dark:text-slate-50"
                 : "text-white drop-shadow-md"
             }`}
           >
-            Allies
+            <BrandName />
           </div>
 
           {/* Desktop nav links (Center aligned) */}
@@ -124,7 +136,7 @@ export default function Navbar() {
                   : "bg-yellow-500 text-slate-950 shadow-[0_0_15px_rgba(234,179,8,0.4)]"
               }`}
             >
-              Get Allies
+              Get Started
             </Link>
 
             {/* Hamburger button — mobile only */}
@@ -172,8 +184,8 @@ export default function Navbar() {
       >
         {/* Sidebar header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 dark:border-slate-800">
-          <span className="text-xl font-headline tracking-tight text-slate-900 dark:text-slate-50">
-            Allies
+          <span className="text-slate-900 dark:text-slate-50">
+            <BrandName />
           </span>
           <button
             onClick={() => setOpen(false)}
@@ -218,7 +230,7 @@ export default function Navbar() {
             className="block text-center w-full py-3 bg-primary-container text-on-primary font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all"
             onClick={() => setOpen(false)}
           >
-            Get Allies
+            Get Started
           </Link>
         </div>
       </aside>
