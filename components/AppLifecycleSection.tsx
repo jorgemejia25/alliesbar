@@ -18,7 +18,7 @@ export default function AppLifecycleSection() {
         </h2>
         <p className="text-on-surface-variant text-lg leading-relaxed">
           Receiving, transfer, inventory, bottle measurement and cost control
-          in one web platform. These are real screens from Allie&apos;s.
+          in one web platform. These are real screens from Allie&apos;s Beverage Inventory System.
         </p>
       </FadeIn>
 

@@ -122,14 +122,14 @@ export default function HeroSection() {
         {/* Thin gold rule */}
         <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#fed65b]/40 to-transparent" />
 
-        {/* What Allies is, in one line, before anything else */}
+        {/* What Allie's Beverage Inventory System is, in one line, before anything else */}
         <h1 className="font-headline text-[26px] sm:text-3xl md:text-4xl leading-tight text-white -mt-1">
           The beverage inventory system for{" "}
           <span className="italic text-[#fed65b]">hotels, restaurants and bars</span>
         </h1>
 
         <p className="max-w-lg text-slate-300/85 text-[13px] sm:text-sm md:text-[15px] leading-relaxed font-light">
-          Allie&apos;s tracks every bottle of liquor, wine and beer from receiving
+          Allie&apos;s Beverage Inventory System tracks every bottle of liquor, wine and beer from receiving
           to the last pour: AI measures what&apos;s left in each bottle from a
           photo, your team counts together from any device, and you see stock,
           usage and beverage cost every day.

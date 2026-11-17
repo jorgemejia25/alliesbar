@@ -8,7 +8,7 @@ import { API_URL, apiErrorMessage } from "@/lib/api";
 const FALLBACK_ERROR = "We could not send your request. Please try again or call us.";
 const FIELD = "mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 font-normal outline-none focus:border-[#b89232]";
 
-/** "Book a Demo" button and its form. The request is emailed to the Allies team. */
+/** "Book a Demo" button and its form. The request is emailed to the Allie's Beverage Inventory System team. */
 export default function BookDemo({
   className,
   onOpen,
@@ -110,7 +110,7 @@ export default function BookDemo({
                 Book a demo
               </h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Leave your details and we&apos;ll show you Allies with your bar in mind.
+                Leave your details and we&apos;ll show you Allie&apos;s Beverage Inventory System with your bar in mind.
               </p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <label className="text-sm font-semibold">

@@ -1,8 +1,8 @@
 export const faqItems = [
   {
-    question: "How do I access Allie's on my device?",
+    question: "How do I access Allie's Beverage Inventory System on my device?",
     answer:
-      "Allie's is a web app. Open any browser on your phone, tablet, or computer and sign in at www.alliesbar.com. No download from the App Store or Play Store is required.",
+      "Allie's Beverage Inventory System is a web app. Open any browser on your phone, tablet, or computer and sign in at www.alliesbar.com. No download from the App Store or Play Store is required.",
   },
   {
     question: "What happens if I have a bottle of liquor that is not in the system?",
@@ -10,11 +10,11 @@ export const faqItems = [
       "Don't worry! Our system allows you to register any bottle you can't find in our large beverage database using its barcode.",
   },
   {
-    question: "How many users can I have on my Allies license?",
+    question: "How many users can I have on my Allie's Beverage Inventory System license?",
     answer: "Unlimited.",
   },
   {
-    question: "Can I access Allies remotely from any device?",
+    question: "Can I access Allie's Beverage Inventory System remotely from any device?",
     answer:
       "Of course! You can access your full inventory review or report from wherever you are, provided you only have internet access.",
   },
@@ -30,7 +30,7 @@ export const pricingFeatures = [
 
 /** The one license sold online. The UPC upgrade is added later, from the app. */
 export const license = {
-  name: "Allie's License",
+  name: "Venue License",
   price: "$299",
   period: "Per month",
   eyebrow: "One venue",
@@ -97,7 +97,7 @@ export const hardwareProducts: {
     eyebrow: "Suggested printer",
     name: "Rollo Wi-Fi Label Printer",
     image: "/rollo-printer.jpg",
-    alt: "Rollo Wi-Fi printer printing an Allie's QR bottle label",
+    alt: "Rollo Wi-Fi printer printing a Allie's Beverage Inventory System QR bottle label",
     href: "https://www.rollo.com/product/rollo-wireless-printer/",
     cta: "Buy printer",
     specs: [
@@ -174,7 +174,7 @@ export const storyPillars = [
 ];
 
 export const founderQuote =
-  "Allie's was born from a real problem, a conversation, and the belief that there had to be a better way.";
+  "Allie's Beverage Inventory System was born from a real problem, a conversation, and the belief that there had to be a better way.";
 
 export const companyCards = [
   {
@@ -193,7 +193,7 @@ export const companyCards = [
     title: "Our History",
     icon: "history_edu",
     body:
-      "Allie's wasn't born in a boardroom. It was born from a real problem, a conversation between two people with different expertise, and the belief that there had to be a better way.",
+      "Allie's Beverage Inventory System wasn't born in a boardroom. It was born from a real problem, a conversation between two people with different expertise, and the belief that there had to be a better way.",
   },
 ];
 
@@ -202,7 +202,7 @@ export const bottleLifecycle = [
     step: "Receive",
     title: "Upload the invoice. Review the details",
     image: "/app/receiving.jpg",
-    alt: "New Receiving screen in the Allie's app, with Take Photo and Upload File options",
+    alt: "New Receiving screen in the Allie's Beverage Inventory System app, with Take Photo and Upload File options",
     points: [
       "Photograph or upload the invoice. AI Invoice extracts the products for you to review and correct.",
       "Add items manually or by scanning a barcode.",
@@ -213,7 +213,7 @@ export const bottleLifecycle = [
     step: "Label",
     title: "Track individual liquor bottles with QR",
     image: "/app/labels.jpg",
-    alt: "Bottle Labels screen in the Allie's app, showing a bottle's QR code",
+    alt: "Bottle Labels screen in the Allie's Beverage Inventory System app, showing a bottle's QR code",
     points: [
       "Print QR labels for individual liquor bottles.",
       "Scan a bottle's QR code to measure it, transfer it, or mark it as finished, broken or courtesy.",
@@ -224,7 +224,7 @@ export const bottleLifecycle = [
     step: "Transfer",
     title: "From the storage room to the bar, on the record",
     image: "/app/transfer.jpg",
-    alt: "Operations screen in the Allie's app, recording a transfer",
+    alt: "Operations screen in the Allie's Beverage Inventory System app, recording a transfer",
     points: [
       "Move stock between outlets, from the storage room to each bar.",
       "Every transfer records the user, the date, the time and the product.",
@@ -235,7 +235,7 @@ export const bottleLifecycle = [
     step: "Measure",
     title: "Four quick ways to record bottle levels",
     image: "/app/measure.jpg",
-    alt: "Allie's measuring the liquid level of a bottle from a photo",
+    alt: "Allie's Beverage Inventory System measuring the liquid level of a bottle from a photo",
     points: [
       "Camera: AI estimates the level from a photo. No scales or ruler needed.",
       "Full or empty: one tap marks a sealed or empty bottle.",
@@ -246,7 +246,7 @@ export const bottleLifecycle = [
     step: "Count",
     title: "Count together, from any device",
     image: "/app/count.jpg",
-    alt: "Quick Count screen in the Allie's app, with the shared count option",
+    alt: "Quick Count screen in the Allie's Beverage Inventory System app, with the shared count option",
     points: [
       "Multiple team members can count the same outlet simultaneously.",
       "Work by category and type, search for products, and see what is still pending.",
@@ -257,7 +257,7 @@ export const bottleLifecycle = [
     step: "Empty",
     title: "When the bottle is finished, it leaves inventory",
     image: "/app/empty.jpg",
-    alt: "Operations screen in the Allie's app, marking bottles as finished",
+    alt: "Operations screen in the Allie's Beverage Inventory System app, marking bottles as finished",
     points: [
       "Finished bottles come out of inventory so they can be replaced bottle-for-bottle.",
       "Broken bottles and courtesy items are recorded too.",

@@ -5,9 +5,9 @@ import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/PricingSection";
 
 export const metadata: Metadata = {
-  title: "Pricing | Allie's Beverage",
+  title: "Pricing | Allie's Beverage Inventory System",
   description:
-    "Allie's license: $299/mo per venue for up to 1,000 distinct UPCs, with a +$100/mo upgrade for up to 10,000. Enterprise for groups with several venues. Plus $49/mo per additional category.",
+    "Allie's Beverage Inventory System: $299/mo per venue for up to 1,000 distinct UPCs, with a +$100/mo upgrade for up to 10,000. Enterprise for groups with several venues. Plus $49/mo per additional category.",
 };
 
 export default function PricingPage() {

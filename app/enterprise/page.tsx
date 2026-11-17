@@ -4,9 +4,9 @@ import EnterpriseCheckout from "@/components/EnterpriseCheckout";
 import EnterpriseResult from "@/components/EnterpriseResult";
 
 export const metadata: Metadata = {
-  title: "Enterprise | Allie's Beverage",
+  title: "Enterprise | Allie's Beverage Inventory System",
   description:
-    "Buy Allie's licenses for several venues in one payment, with one master user to manage all of them.",
+    "Buy Allie's Beverage Inventory System licenses for several venues in one payment, with one master user to manage all of them.",
 };
 
 export default async function EnterprisePage({

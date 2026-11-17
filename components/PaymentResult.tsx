@@ -49,7 +49,7 @@ export default function PaymentResult({ sessionId }: { sessionId: string }) {
             <CheckCircle2 className="mx-auto text-emerald-600" size={48} />
             <h1 className="mt-6 font-headline text-3xl">Your subscription is active.</h1>
             <p className="mt-3 leading-7 text-slate-600">
-              Your Allies account is ready. We sent your login details to your email.
+              Your Allie&apos;s Beverage Inventory System account is ready. We sent your login details to your email.
               {validUntil && <> Your current period runs until <strong>{validUntil}</strong>.</>}
             </p>
           </>

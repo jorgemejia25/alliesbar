@@ -4,7 +4,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 /**
- * Coded mock of the Allie's Dashboard (Overview), with the same cards as the
+ * Coded mock of the Allie's Beverage Inventory System Dashboard (Overview), with the same cards as the
  * app: KPIs, operations panels and charts. They appear one by one, then the
  * highlight walks through them and a panel right under the highlighted card's
  * row explains what it tells you, so card and explanation are always read

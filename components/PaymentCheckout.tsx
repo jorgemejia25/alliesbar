@@ -13,7 +13,7 @@ type Method = "card" | "check";
 // The only plan sold online. The UPC upgrade is added later from the app, and
 // groups with several venues buy through /enterprise.
 const PLAN = "initial";
-const detail = { label: "Allie's license", price: license.price, period: "per month", upcs: license.upcLimit };
+const detail = { label: "Venue license", price: license.price, period: "per month", upcs: license.upcLimit };
 
 export default function PaymentCheckout({ cancelled = false }: { cancelled?: boolean }) {
   const [loading, setLoading] = useState(false);
@@ -76,7 +76,7 @@ export default function PaymentCheckout({ cancelled = false }: { cancelled?: boo
             <ArrowLeft size={16} /> Back to pricing
           </Link>
           <p className="mt-12 text-xs font-bold uppercase tracking-[0.24em] text-[#fed65b]">{method === "check" ? "Pay by check" : "Secure checkout"}</p>
-          <h1 className="mt-4 font-headline text-4xl leading-tight">Start with Allies.</h1>
+          <h1 className="mt-4 font-headline text-4xl leading-tight">Start with Allie&apos;s Beverage Inventory System.</h1>
           <p className="mt-4 leading-7 text-slate-300">
             {method === "check"
               ? "Enter your venue details. We'll send you the check instructions, and your venue account is activated as soon as your check arrives."

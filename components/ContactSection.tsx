@@ -19,7 +19,7 @@ export default function ContactSection() {
   const [error, setError] = useState<string | null>(null);
   const [sentTo, setSentTo] = useState<string | null>(null);
 
-  // The message goes straight to the Allies inbox from the site, without
+  // The message goes straight to the Allie's Beverage Inventory System inbox from the site, without
   // opening the visitor's mail app.
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -64,7 +64,7 @@ export default function ContactSection() {
               Get In Touch
             </p>
             <h1 className="mb-4 font-headline text-4xl leading-tight text-primary md:text-5xl">
-              Tell us what you need from Allie&apos;s
+              Tell us what you need from Allie&apos;s Beverage Inventory System
             </h1>
             <p className="text-lg font-medium text-on-surface-variant">
               Ask about pricing, printer and label setup, or how the inventory

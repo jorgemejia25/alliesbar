@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import UsSection from "@/components/UsSection";
 
 export const metadata: Metadata = {
-  title: "Who We Are | Allie's Beverage",
+  title: "Who We Are | Allie's Beverage Inventory System",
   description:
     "Meet Timothy and Alejandra and learn the story, mission, and vision behind Allie's Beverage Inventory System.",
 };
